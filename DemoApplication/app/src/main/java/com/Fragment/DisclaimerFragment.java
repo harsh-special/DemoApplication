@@ -18,7 +18,7 @@ public class DisclaimerFragment extends Fragment{
     public static DisclaimerFragment newInstance(Context context) {
 
         Bundle args = new Bundle();
-        args.putString("mTitleText", "Discaimer");
+        args.putString("mTitleText", context.getString(R.string.headre_disclaimer_name));
         DisclaimerFragment fragment = new DisclaimerFragment();
         fragment.setArguments(args);
         return fragment;

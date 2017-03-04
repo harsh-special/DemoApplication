@@ -49,7 +49,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     public static HomeFragment newInstance(Context context) {
 
         Bundle args = new Bundle();
-        args.putString("mTitleText", "Go Green Card");
+        args.putString("mTitleText", context.getResources().getString(R.string.app_name));
         HomeFragment fragment = new HomeFragment();
         GCGModesParser.dicStateMode.clear();
         GCGModesParser parser = new GCGModesParser();
@@ -253,6 +253,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                             if (b) {
                                 GCGModesParser.arrOctagonSelected.clear();
                                 GCGModesParser.arrOctagonSelected.add(arr_options.getJSONObject(i).getString("id"));
+                                GCGModesParser.dicStateMode.put(arr_options.getJSONObject(i).getString("id"), "yes");
+                            } else {
+                                GCGModesParser.dicStateMode.remove(arr_options.getJSONObject(i).getString("id"));
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -282,8 +285,13 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         if (v == btn_yes) {
-            GCGModesParser.moveToStepYes();
-            setDataToView();
+            HashMap hashMap = GCGModesParser.moveToStepYes();
+
+            if (hashMap.get("success").equals("true")) {
+                setDataToView();
+            } else {
+                Toast.makeText(getActivity(), hashMap.get("title").toString(), Toast.LENGTH_LONG).show();
+            }
         } else if (v == btn_no) {
             GCGModesParser.moveToStepNo();
             setDataToView();
@@ -299,7 +307,12 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 }
             } else {
                 if (GCGModesParser.arrOctagonSelected.size() > 0) {
-                    GCGModesParser.moveToStepChoice(GCGModesParser.arrOctagonSelected.get(0));
+                    HashMap hashMap = GCGModesParser.validateOptionsForOctagon(GCGModesParser.arrOctagonSelected.get(0));
+                    if (hashMap.get("success").equals("true")) {
+                        GCGModesParser.moveToStepChoice(GCGModesParser.arrOctagonSelected.get(0));
+                    } else {
+                        Toast.makeText(getActivity(), hashMap.get("title").toString(), Toast.LENGTH_LONG).show();
+                    }
                     setDataToView();
                 }
             }
