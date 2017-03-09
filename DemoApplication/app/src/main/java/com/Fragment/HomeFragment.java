@@ -9,13 +9,13 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.Util.GCGModesParser;
@@ -34,7 +34,8 @@ import java.util.HashMap;
  * Created by admin on 1/23/2017.
  */
 public class HomeFragment extends Fragment implements View.OnClickListener {
-    private TextView tv_question;
+    private WebView tv_question;
+    private WebView tv_question_text;
     private Button btn_yes, btn_no, btn_ok, btn_next;
     private ArrayList<String> al_que = new ArrayList<>();
     private LinearLayout ll_diamond, ll_redRectangle, ll_oval, ll_checkbox;
@@ -45,6 +46,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     View view;
     private HashMap<CompoundButton, JSONArray> hQuestionarre;
     private HashMap<CompoundButton, JSONArray> hOctagon;
+    private static JSONObject jsonContantFile = null;
 
     public static HomeFragment newInstance(Context context) {
 
@@ -64,12 +66,14 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
         initView(view);
         setListner();
+        getContentsFromConstantFile();
         getContentsFromJsonFile();
         return view;
     }
 
     private void initView(View v) {
-        tv_question = (TextView) v.findViewById(R.id.tv_question_diamond);
+        tv_question = (WebView) v.findViewById(R.id.tv_question_diamond);
+        tv_question_text = (WebView) v.findViewById(R.id.tv_question_diamond_note);
         btn_no = (Button) v.findViewById(R.id.btn_no);
         btn_yes = (Button) v.findViewById(R.id.btn_yes);
         btn_ok = (Button) v.findViewById(R.id.btn_ok);
@@ -89,7 +93,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     }
 
     private void getContentsFromJsonFile() {
-        modes_json_string = loadJSONFromAsset();
+        modes_json_string = loadJSONFromAsset("Modes.json");
         try {
             modes_json_object = new JSONObject(modes_json_string);
             Log.e("TAG", "modes_json_object===>" + modes_json_object);
@@ -97,7 +101,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             Log.e("TAG", "dicMode.get(\"json\")==>" + dicMode.get("json"));
             loadParser();
             setDataToView();
-            tv_question.setText(GCGModesParser.currentStepText);
+            setTitleValue(GCGModesParser.currentStepText);
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -105,10 +109,10 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     }
 
 
-    private String loadJSONFromAsset() {
+    private String loadJSONFromAsset(String jsonFile) {
         String json = null;
         try {
-            InputStream is = getActivity().getAssets().open("Modes.json");
+            InputStream is = getActivity().getAssets().open(jsonFile);
             int size = is.available();
             byte[] buffer = new byte[size];
             is.read(buffer);
@@ -142,14 +146,14 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             ll_diamond.setVisibility(View.VISIBLE);
             ll_oval.setVisibility(View.GONE);
             ll_redRectangle.setVisibility(View.GONE);
-            tv_question.setText(GCGModesParser.currentStepText);
+            setTitleValue(GCGModesParser.currentStepText);
         } else if (GCGModesParser.currentStepType.equals("redRectangle")) {
             Log.e("TAG", "view redRectangle");
             ll_redRectangle.setVisibility(View.VISIBLE);
             ll_diamond.setVisibility(View.GONE);
             ll_oval.setVisibility(View.GONE);
             setupOptionsInQuestionaireView(GCGModesParser.currentStepType);
-            tv_question.setText(GCGModesParser.currentStepText);
+            setTitleValue(GCGModesParser.currentStepText);
 
         } else if (GCGModesParser.currentStepType.equals("octagon")) {
             Log.e("TAG", "view octagon");
@@ -157,12 +161,12 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             ll_diamond.setVisibility(View.GONE);
             ll_oval.setVisibility(View.GONE);
             setupOptionsInQuestionaireView(GCGModesParser.currentStepType);
-            tv_question.setText(GCGModesParser.currentStepText);
+            setTitleValue(GCGModesParser.currentStepText);
         } else if (GCGModesParser.currentStepType.equals("oval")) {
             ll_redRectangle.setVisibility(View.GONE);
             ll_diamond.setVisibility(View.GONE);
             ll_oval.setVisibility(View.VISIBLE);
-            tv_question.setText(GCGModesParser.currentStepText);
+            setTitleValue(GCGModesParser.currentStepText);
         } else if (GCGModesParser.currentStepType.equals("yellowHexa")) {
             try {
                 if (GCGModesParser.dicCurrentState.getString("hasChoice").equals("yes")) {
@@ -170,12 +174,14 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                     ll_diamond.setVisibility(View.GONE);
                     ll_oval.setVisibility(View.GONE);
                     setupOptionsInQuestionaireView(GCGModesParser.currentStepType);
-                    tv_question.setText(GCGModesParser.currentStepText);
+
+                    setTitleValue(GCGModesParser.currentStepText);
+
                 } else {
                     ll_redRectangle.setVisibility(View.GONE);
                     ll_diamond.setVisibility(View.GONE);
                     ll_oval.setVisibility(View.VISIBLE);
-                    tv_question.setText(GCGModesParser.currentStepText);
+                    setTitleValue(GCGModesParser.currentStepText);
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -183,6 +189,81 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
         }
 
+    }
+
+    private void setTitleValue(String currentStepText) {
+        tv_question.scrollTo(0, 0);
+        StringBuilder builder = new StringBuilder();
+        if (hasKey(currentStepText)) {
+            builder.append("<html><body><h3><span style=\"font-weight:normal\"><p align=\"center\">");
+            builder.append(
+                    jsonContantFile.optString(currentStepText).equalsIgnoreCase("")
+                    ?
+                    currentStepText
+                    : jsonContantFile.optString(currentStepText)
+            );
+            builder.append("</p></span></h3></body></html>");
+
+        } else {
+//        String text1 =
+//                        "<html>
+//            <title><h2>P52_H7_TITLE<h2></title>
+// <body><p align=\"justify\">F1 category = unmarried sons/daughters (21 or over) of citizens</br>" +
+//                        "F2B = unmarried sons/daughters (21 or over) of green-card holders</br>" +
+//                        "F3 = married sons/daughters of citizens</br>" +
+//                        "F4 = siblings of 21 or over citizens</br>" +
+//                        "</br>" +
+//                        "A petition's priority date is usually its filing date with USCIS.  Since there is a limited number of visa numbers available each year in each category (except for immediate relative petitions), the earlier is your petition's priority date, the sooner there will be a visa number available for you.  That is, the further ahead in line the petition will be.  When a petition's priority date is 'current', it means it's now the turn of that petition (along with other petitions with the same priority date) to have a visa number, i.e. they are at the head of the line and visa numbers are immediately available for those petitions.  Only with a visa number available can you continue to the next step of securing a green card.   </br>" +
+//                        "</br>" +
+//                        "But even with a visa number available, the petition has to be 'approved' first.  Being approved means that USCIS has found that the relationship claimed between you and petitioner (your parent or sibling here) exists and is genuine.  Usually, a petition will be approved long before its priority date becomes current.</p>" +
+//                         "<p align=\"justify\">"
+//                        +"<i>Tip</i>:  If the I-130 was filed for you by your parent under F2B category, and while waiting for your priority date to be current, have parent file to become citizen if priority dates move faster under F1 category.  If parent files for citizenship anyway, you will be automatically converted from F2B to F1, but you have the right to 'opt out' and stay in F2B if priority dates are moving faster with F2B.</p></body></html>";
+//
+//
+//        String text2 =
+//                "<html><body>"+
+//                        "<p align=\"justify\">"
+//                        +"<i>Note</i>: a \"child\" can also include your stepchild, as long as you were married to his or her parent before the stepchild turned 18.</p></body><html>";
+
+//        setData(text2);
+//        setData(text2);
+//            tv_question.setText(Html.fromHtml(text2));
+//            tv_question.setText(currentStepText);
+            builder.append("<html><body><h3><span style=\"font-weight:normal\"><p align=\"center\">");
+            builder.append(currentStepText);
+            builder.append("</p></span></h3></body></html>");
+        }
+//
+        try {
+            builder.append(GCGModesParser.dicCurrentState.has("body")
+                    ?
+                    GCGModesParser.dicCurrentState.getString("body")
+                    : "");
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        try {
+            if (GCGModesParser.dicCurrentState.has("note")) {
+                tv_question_text.setVisibility(
+                        View.VISIBLE);
+                tv_question_text.getSettings().setJavaScriptEnabled(true);
+                tv_question_text.loadDataWithBaseURL("", GCGModesParser.dicCurrentState.getString("note"), "text/html", "UTF-8", "");
+            } else
+                tv_question_text.setVisibility(
+                        View.GONE);
+
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        setData(builder.toString());
+//        tv_question.setText(builder);
+    }
+
+    private void setData(String text) {
+        tv_question.getSettings().setJavaScriptEnabled(true);
+        tv_question.loadDataWithBaseURL("", text, "text/html", "UTF-8", "");
     }
 
     private void setupOptionsInQuestionaireView(String currentStepType) {
@@ -202,6 +283,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             createRadioButton(cb, radioButton, currentStepType, i, arr_options);
 
         }
+
 
     }
 
@@ -322,5 +404,22 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         }
     }
 
+    private void getContentsFromConstantFile() {
+
+        try {
+            jsonContantFile = new JSONObject(loadJSONFromAsset("ConstantsFile.json"));
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    private boolean hasKey(String key) {
+        if (jsonContantFile != null) {
+            return jsonContantFile.has(key);
+        }
+        return false;
+    }
 
 }
