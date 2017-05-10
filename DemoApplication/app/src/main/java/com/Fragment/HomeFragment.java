@@ -46,7 +46,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     View view;
     private HashMap<CompoundButton, JSONArray> hQuestionarre;
     private HashMap<CompoundButton, JSONArray> hOctagon;
-    private static JSONObject jsonContantFile = null;
+
 
     public static HomeFragment newInstance(Context context) {
 
@@ -54,7 +54,12 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         args.putString("mTitleText", context.getResources().getString(R.string.app_name));
         HomeFragment fragment = new HomeFragment();
         GCGModesParser.dicStateMode.clear();
+        GCGModesParser.buffer.setLength(0);
+        GCGModesParser.arrQuestionaireSelected.clear();
+        GCGModesParser.arrOctagonSelected.clear();
+        GCGModesParser.dicStateModeForPdf.clear();
         GCGModesParser parser = new GCGModesParser();
+        GCGModesParser.jsonContantFile=null;
         fragment.setArguments(args);
         return fragment;
     }
@@ -149,11 +154,25 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             setTitleValue(GCGModesParser.currentStepText);
         } else if (GCGModesParser.currentStepType.equals("redRectangle")) {
             Log.e("TAG", "view redRectangle");
-            ll_redRectangle.setVisibility(View.VISIBLE);
-            ll_diamond.setVisibility(View.GONE);
-            ll_oval.setVisibility(View.GONE);
-            setupOptionsInQuestionaireView(GCGModesParser.currentStepType);
-            setTitleValue(GCGModesParser.currentStepText);
+            if (GCGModesParser.arrQuestionaireSelected.size() > 0) {
+                if (GCGModesParser.dicStateMode.containsKey("AP_OV4")) {
+                    GCGModesParser.dicStateMode.put("D3","yes");
+                    ll_redRectangle.setVisibility(View.VISIBLE);
+                    ll_diamond.setVisibility(View.GONE);
+                    ll_oval.setVisibility(View.GONE);
+                    setupOptionsInQuestionaireView(GCGModesParser.currentStepType);
+                    setTitleValue(GCGModesParser.currentStepText);
+                } else {
+                    GCGModesParser.moveToStepChoice(GCGModesParser.arrQuestionaireSelected.get(0));
+                    setDataToView();
+                }
+            } else {
+                ll_redRectangle.setVisibility(View.VISIBLE);
+                ll_diamond.setVisibility(View.GONE);
+                ll_oval.setVisibility(View.GONE);
+                setupOptionsInQuestionaireView(GCGModesParser.currentStepType);
+                setTitleValue(GCGModesParser.currentStepText);
+            }
 
         } else if (GCGModesParser.currentStepType.equals("octagon")) {
             Log.e("TAG", "view octagon");
@@ -187,6 +206,11 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 e.printStackTrace();
             }
 
+        } else if (GCGModesParser.currentStepType.equals("-1")) {
+            ll_redRectangle.setVisibility(View.GONE);
+            ll_diamond.setVisibility(View.GONE);
+            ll_oval.setVisibility(View.GONE);
+            setTitleValue("Thank you for using GreenCard! Go.  Please check your email and download the pdf file to see the options you've just selected and the recommended methods for you to immigrate to or remain in the US.  If you would like to run the app again with different options, just hit the Refresh or Home button. ");
         }
 
     }
@@ -195,12 +219,12 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         tv_question.scrollTo(0, 0);
         StringBuilder builder = new StringBuilder();
         if (hasKey(currentStepText)) {
-            builder.append("<html><body><h3><span style=\"font-weight:normal\"><p align=\"center\">");
+            builder.append("<html><body><h3><span style=\"font-weight:normal\"><p align=\"justify\">");
             builder.append(
-                    jsonContantFile.optString(currentStepText).equalsIgnoreCase("")
-                    ?
-                    currentStepText
-                    : jsonContantFile.optString(currentStepText)
+                    GCGModesParser.jsonContantFile.optString(currentStepText).equalsIgnoreCase("")
+                            ?
+                            currentStepText
+                            : GCGModesParser.jsonContantFile.optString(currentStepText)
             );
             builder.append("</p></span></h3></body></html>");
 
@@ -229,7 +253,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 //        setData(text2);
 //            tv_question.setText(Html.fromHtml(text2));
 //            tv_question.setText(currentStepText);
-            builder.append("<html><body><h3><span style=\"font-weight:normal\"><p align=\"center\">");
+            builder.append("<html><body><h3><span style=\"font-weight:normal\"><p align=\"justify\">");
             builder.append(currentStepText);
             builder.append("</p></span></h3></body></html>");
         }
@@ -375,7 +399,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 Toast.makeText(getActivity(), hashMap.get("title").toString(), Toast.LENGTH_LONG).show();
             }
         } else if (v == btn_no) {
-            GCGModesParser.moveToStepNo();
+            GCGModesParser.moveToStepNo(getActivity());
             setDataToView();
         } else if (v == btn_next) {
             if (GCGModesParser.currentStepType.equals("redRectangle")) {
@@ -399,7 +423,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 }
             }
         } else if (v == btn_ok) {
-            GCGModesParser.moveToStepOK();
+            GCGModesParser.moveToStepOK(getActivity());
             setDataToView();
         }
     }
@@ -407,7 +431,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     private void getContentsFromConstantFile() {
 
         try {
-            jsonContantFile = new JSONObject(loadJSONFromAsset("ConstantsFile.json"));
+            GCGModesParser.jsonContantFile = new JSONObject(loadJSONFromAsset("ConstantsFile.json"));
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -416,8 +440,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     }
 
     private boolean hasKey(String key) {
-        if (jsonContantFile != null) {
-            return jsonContantFile.has(key);
+        if (GCGModesParser.jsonContantFile != null) {
+            return GCGModesParser.jsonContantFile.has(key);
         }
         return false;
     }

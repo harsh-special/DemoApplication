@@ -1,7 +1,14 @@
 package com.Util;
 
+import android.Manifest;
+import android.app.Activity;
+import android.content.Context;
+import android.content.pm.PackageManager;
+import android.os.Build;
+import android.support.v4.app.ActivityCompat;
 import android.util.Log;
-import android.widget.Toast;
+
+import com.pdfhelper.HelperPDF;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -35,11 +42,15 @@ public class GCGModesParser {
     public static ArrayList<String> arrQuestionaireSelected = new ArrayList<>();
     public static ArrayList<String> arrOctagonSelected = new ArrayList<>();
     public static String exitType = "exitType";
-    private static StringBuffer buffer = new StringBuffer();
+    public static StringBuffer buffer = new StringBuffer();
 
     static HashMap<Object, JSONObject> dicMain = new HashMap<Object, JSONObject>();
     public static HashMap<Object, String> dicStateMode = new HashMap<Object, String>();
+
+    public static HashMap<Object, String> dicStateModeForPdf = new HashMap<Object, String>();
     public static JSONObject dicCurrentState;
+
+    public static JSONObject jsonContantFile = null;
 //    public static JSONObject dicStateMode;
 
     public static void setData(HashMap<Object, JSONObject> data) {
@@ -100,7 +111,7 @@ public class GCGModesParser {
     }
 
 
-    public static void moveToStepNo() {
+    public static void moveToStepNo(Context mContext) {
         try {
 //            JSONObject jsonObject = null;
 //            JSONArray jsonArray = dicCurrentState.getJSONArray(String.valueOf(GCGModesParser.options));
@@ -123,23 +134,39 @@ public class GCGModesParser {
 
             Object safeDicCurrentState = dicCurrentState.get(String.valueOf(GCGModesParser.optionB));
             Log.e("TAG", "Object==>" + safeDicCurrentState);
+
             if (safeDicCurrentState instanceof JSONObject) {
                 JSONObject jsonObject1 = (JSONObject) safeDicCurrentState;
                 String nextStep = jsonObject1.getString(String.valueOf(GCGModesParser.toPoint));
                 currentRootNode = nextStep;
                 saveDataForPdf(dicCurrentState.getString(GCGModesParser.title), "no");
                 saveState(dicCurrentState.getString(String.valueOf(GCGModesParser.id)), "no");
-                dicCurrentState = jsonObject_mode2.getJSONObject(String.valueOf(currentRootNode));
-                currentStepText = dicCurrentState.getString(String.valueOf(GCGModesParser.title));
-                currentStepType = dicCurrentState.getString(String.valueOf(GCGModesParser.type));
+                if (currentRootNode.equalsIgnoreCase("-1")) {
+
+                    askingPermission(mContext);
+                    currentStepType = "-1";
+
+                } else {
+                    dicCurrentState = jsonObject_mode2.getJSONObject(String.valueOf(currentRootNode));
+                    currentStepText = dicCurrentState.getString(String.valueOf(GCGModesParser.title));
+                    currentStepType = dicCurrentState.getString(String.valueOf(GCGModesParser.type));
+                }
             } else if (dicCurrentState.get(String.valueOf(GCGModesParser.options)) instanceof JSONArray) {
                 JSONArray jsonArray1 = (JSONArray) dicCurrentState.get(String.valueOf(GCGModesParser.options));
                 String toPoint = getToPointFromOptions((JSONArray) safeDicCurrentState);
                 saveDataForPdf(dicCurrentState.getString(GCGModesParser.title), "no");
                 saveState(dicCurrentState.getString(String.valueOf(GCGModesParser.id)), "no");
-                dicCurrentState = jsonObject_mode2.getJSONObject(String.valueOf(toPoint));
-                currentStepText = dicCurrentState.getString(String.valueOf(GCGModesParser.title));
-                currentStepType = dicCurrentState.getString(String.valueOf(GCGModesParser.type));
+
+                if (toPoint.equalsIgnoreCase("-1")) {
+
+                    askingPermission(mContext);
+                    currentStepType = "-1";
+
+                } else {
+                    dicCurrentState = jsonObject_mode2.getJSONObject(String.valueOf(toPoint));
+                    currentStepText = dicCurrentState.getString(String.valueOf(GCGModesParser.title));
+                    currentStepType = dicCurrentState.getString(String.valueOf(GCGModesParser.type));
+                }
             }
 
 
@@ -164,7 +191,7 @@ public class GCGModesParser {
     }
 
     public static HashMap<Object, Object> moveToStepYes() {
-        HashMap<Object,Object> map=new HashMap<>();
+        HashMap<Object, Object> map = new HashMap<>();
         try {
 //            JSONObject jsonObject = null;
 //            JSONArray jsonArray = dicCurrentState.getJSONArray(String.valueOf(GCGModesParser.options));
@@ -176,10 +203,9 @@ public class GCGModesParser {
             Log.e("TAG", "if Option a==>");
 
 
-
-            if(dicCurrentState.getString(GCGModesParser.id).equalsIgnoreCase("P51_D12") && isStateSavedFor("M1_D7")){
-                boolean value   =getNodeState("M1_D7");
-                if(!value){
+            if (dicCurrentState.getString(GCGModesParser.id).equalsIgnoreCase("P51_D12") && isStateSavedFor("M1_D7")) {
+                boolean value = getNodeState("M1_D7");
+                if (!value) {
                     map.put("success", "false");
                     map.put("title", "It's not possible to select No previously at M1_D7 and now select Yes at P51_D12.  Please try again and select No.");
                     map.put("optionID", "");
@@ -265,20 +291,21 @@ public class GCGModesParser {
 //                    arrNegativeValues.add(getNodeState(arrNegative.get(i)));
 //                }
 
-                boolean isAllPositive = arrPositiveValues.size() > 0 ? !arrPositiveValues.contains(false) : false;
-                boolean isAllNegative = arrNegativeValues.size() > 0 ? !arrNegativeValues.contains(true) : false;
+                boolean isAllPositive = !arrPositiveValues.contains(false);
+                boolean isAllNegative = !arrNegativeValues.contains(true);
 
 
-
-                if(jsonArray1.getJSONObject(i).opt(GCGModesParser.exitType) != null && jsonArray1.getJSONObject(i).opt(GCGModesParser.exitType)  instanceof String){
+                if (jsonArray1.getJSONObject(i).opt(GCGModesParser.exitType) != null && jsonArray1.getJSONObject(i).opt(GCGModesParser.exitType) instanceof String) {
                     removeValueForPPKey();
                     saveState(jsonArray1.getJSONObject(i).getString(GCGModesParser.exitType), "yes");
                 }
 
-                if (jsonArray1.getJSONObject(i).opt("contains") != null && jsonArray1.getJSONObject(i).opt("contains")  instanceof JSONArray) {
+                if (jsonArray1.getJSONObject(i).opt("contains") != null && jsonArray1.getJSONObject(i).opt("contains") instanceof JSONArray) {
                     if (isArrStateSavedFor(jsonArray1.getJSONObject(i).getJSONArray("contains"))) {
                         toPoint = jsonArray1.getJSONObject(i).getString("toPoint");
                         return toPoint;
+                    } else if (arrNegativeValues.size() == 0 && arrPositiveValues.size() == 0) {
+                        continue;
                     }
                 }
 
@@ -300,8 +327,6 @@ public class GCGModesParser {
                 } else {
                     toPoint = jsonArray1.getJSONObject(i).getString("toPoint");
                 }
-
-
 
 
             } catch (JSONException e) {
@@ -398,7 +423,7 @@ public class GCGModesParser {
         }
     }
 
-    public static void moveToStepOK() {
+    public static void moveToStepOK(Context mContext) {
         try {
             JSONArray jsonArray = dicCurrentState.getJSONArray(String.valueOf(GCGModesParser.options));
             Log.e("TAG", "jsonArray==>" + jsonArray);
@@ -410,7 +435,12 @@ public class GCGModesParser {
                     saveState(safeDicCurrentState.getString(GCGModesParser.exitType), "yes");
                 }
                 currentRootNode = nextStep;
-                saveDataForPdf(dicCurrentState.getString(GCGModesParser.title), "yes");
+                saveDataForPdf(dicCurrentState.getString(GCGModesParser.title), "ok");
+                if (nextStep.equalsIgnoreCase("-1")) {
+                    askingPermission(mContext);
+                    currentStepType = "-1";
+                }
+
                 saveState(dicCurrentState.getString(String.valueOf(GCGModesParser.id)), "yes");
                 dicCurrentState = jsonObject_mode2.getJSONObject(String.valueOf(currentRootNode));
                 currentStepText = dicCurrentState.getString(String.valueOf(GCGModesParser.title));
@@ -420,7 +450,12 @@ public class GCGModesParser {
                 if (toPoint.equalsIgnoreCase("")) {
                     toPoint = getToPointFromOptions(jsonArray);
                 }
-                saveDataForPdf(dicCurrentState.getString(GCGModesParser.title), "yes");
+                saveDataForPdf(dicCurrentState.getString(GCGModesParser.title), "ok");
+                if (toPoint.equalsIgnoreCase("-1")) {
+                    askingPermission(mContext);
+                    currentStepType = "-1";
+                }
+
                 saveState(dicCurrentState.getString(String.valueOf(GCGModesParser.id)), "yes");
                 dicCurrentState = jsonObject_mode2.getJSONObject(String.valueOf(toPoint));
                 currentStepText = dicCurrentState.getString(String.valueOf(GCGModesParser.title));
@@ -430,7 +465,12 @@ public class GCGModesParser {
                 if (toPoint.equalsIgnoreCase("")) {
                     toPoint = getToPointFromOptions(jsonArray);
                 }
-                saveDataForPdf(dicCurrentState.getString(GCGModesParser.title), "yes");
+                saveDataForPdf(dicCurrentState.getString(GCGModesParser.title), "ok");
+                if (toPoint.equalsIgnoreCase("-1")) {
+                    askingPermission(mContext);
+                    currentStepType = "-1";
+                }
+
                 saveState(dicCurrentState.getString(String.valueOf(GCGModesParser.id)), "yes");
                 dicCurrentState = jsonObject_mode2.getJSONObject(String.valueOf(toPoint));
                 currentStepText = dicCurrentState.getString(String.valueOf(GCGModesParser.title));
@@ -450,8 +490,22 @@ public class GCGModesParser {
             if (safeDicCurrentState instanceof JSONObject) {
                 JSONObject jsonObject = (JSONObject) safeDicCurrentState;
                 String nextStep = jsonObject.getString(String.valueOf(GCGModesParser.toPoint));
-                saveDataForPdf(dicCurrentState.getString(GCGModesParser.title), "yes");
-                saveState(dicCurrentState.getString(String.valueOf(GCGModesParser.id)), "yes");
+
+                if (dicCurrentState.getString("type").equalsIgnoreCase("redRectangle")) {
+                    StringBuilder sb = new StringBuilder();
+                    for (String s : arrQuestionaireSelected) {
+                        sb.append(s);
+                        if (!s.equalsIgnoreCase(arrQuestionaireSelected.get(arrQuestionaireSelected.size() - 1))) {
+                            sb.append(",");
+                        }
+                    }
+
+                    saveDataForPdf(dicCurrentState.getString(GCGModesParser.title), sb.toString());
+                } else {
+
+                    saveDataForPdf(dicCurrentState.getString(GCGModesParser.title), optionID);
+                }
+                saveState(dicCurrentState.getString(String.valueOf(GCGModesParser.id)), optionID);
                 currentRootNode = nextStep;
                 dicCurrentState = jsonObject_mode2.getJSONObject(String.valueOf(currentRootNode));
                 currentStepText = dicCurrentState.getString(String.valueOf(GCGModesParser.title));
@@ -459,7 +513,21 @@ public class GCGModesParser {
             } else if (safeDicCurrentState instanceof JSONArray) {
                 JSONArray jsonArray1 = (JSONArray) safeDicCurrentState;
                 String toPoint = getToPointFromOptions(jsonArray1);
-                saveDataForPdf(dicCurrentState.getString(GCGModesParser.title), "yes");
+
+                if (dicCurrentState.getString("type").equalsIgnoreCase("redRectangle")) {
+                    StringBuilder sb = new StringBuilder();
+                    for (String s : arrQuestionaireSelected) {
+                        sb.append(s);
+                        if (!s.equalsIgnoreCase(arrQuestionaireSelected.get(arrQuestionaireSelected.size() - 1))) {
+                            sb.append(",");
+                        }
+                    }
+
+                    saveDataForPdf(dicCurrentState.getString(GCGModesParser.title), sb.toString());
+                } else {
+
+                    saveDataForPdf(dicCurrentState.getString(GCGModesParser.title), optionID);
+                }
                 saveState(dicCurrentState.getString(String.valueOf(GCGModesParser.id)), "yes");
                 dicCurrentState = jsonObject_mode2.getJSONObject(String.valueOf(toPoint));
                 currentStepText = dicCurrentState.getString(String.valueOf(GCGModesParser.title));
@@ -522,11 +590,11 @@ public class GCGModesParser {
         for (int i = 0; i < jsonArray.length(); i++) {
             try {
                 if (!dicStateMode.containsKey(jsonArray.getString(i))) {
-                    isContains=false;
+                    isContains = false;
                     break;
                 }
 
-                isContains=true;
+                isContains = true;
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -554,20 +622,32 @@ public class GCGModesParser {
     }
 
     private static void saveDataForPdf(String key, String value) {
-        buffer.append(key + " : " + value + "\n");
+        String valueFromJson=   GCGModesParser.jsonContantFile.optString(value).equalsIgnoreCase("")
+                ?
+                value
+                : GCGModesParser.jsonContantFile.optString(value);
+        dicStateModeForPdf.put(key, valueFromJson);
+        buffer.append(key + "\n" + valueFromJson + "\n\n");
     }
 
 
     public static HashMap<Object, Object> validateOptionsForOctagon(String optionSelected) {
         HashMap<Object, Object> map = new HashMap<>();
-         String currentNode = "";
+        String currentNode = "";
         try {
             currentNode = dicCurrentState.getString(GCGModesParser.id);
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        if (arrQuestionaireSelected.contains("Option3") && (currentNode.equalsIgnoreCase("M1_OC2") || currentNode.equalsIgnoreCase("OC2") || currentNode.equalsIgnoreCase("M3_OC2"))
-                && optionSelected.equalsIgnoreCase("optionA")) {
+        if (arrQuestionaireSelected.contains("Option3") &&
+
+                ((currentNode.equalsIgnoreCase("M1_OC2") && optionSelected.equalsIgnoreCase("M1_OC2_OPTIONA"))
+
+                        ||
+                        (currentNode.equalsIgnoreCase("OC2") && optionSelected.equalsIgnoreCase("OC2_OPTIONA"))
+
+                        ||
+                        (currentNode.equalsIgnoreCase("M3_OC2") && optionSelected.equalsIgnoreCase("M3_OC2_OPTIONA")))) {
 
             map.put("success", "false");
             map.put("title", "Since you've selected option 3, it's not possible to have A option.  Please try again.");
@@ -582,9 +662,35 @@ public class GCGModesParser {
         return map;
 
 
+    }
 
+    // Permissions for veriosn >Android M
+    private static void askingPermission(Context mContext) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            boolean permissionCheck = hasPermissions(mContext, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE});
+            if (!permissionCheck) {
+                ActivityCompat.requestPermissions((Activity) mContext,
+                        new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                        99);
+            } else {
+                HelperPDF.sharePdf(buffer.toString(), mContext);
             }
+        } else {
+            HelperPDF.sharePdf(buffer.toString(), mContext);
+        }
 
+    }
+
+    public static boolean hasPermissions(Context context, String... permissions) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && context != null && permissions != null) {
+            for (String permission : permissions) {
+                if (ActivityCompat.checkSelfPermission(context, permission) != PackageManager.PERMISSION_GRANTED) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
 
 
 }

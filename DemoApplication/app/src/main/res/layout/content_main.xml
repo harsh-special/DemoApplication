@@ -17,6 +17,7 @@
             android:layout_height="0dp"
             android:layout_weight="0.3"
             android:textSize="23sp"
+            android:fadeScrollbars="false"
             android:gravity="top|center"
             android:textColor="@android:color/black"
             />

@@ -1,6 +1,8 @@
 package com.greencardgo;
 
+import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -18,6 +20,8 @@ import android.view.View;
 import com.Fragment.AboutUsFragment;
 import com.Fragment.DisclaimerFragment;
 import com.Fragment.HomeFragment;
+import com.Util.GCGModesParser;
+import com.pdfhelper.HelperPDF;
 
 public class MainActivity extends AppCompatActivity {
     private DrawerLayout drawerLayout;
@@ -33,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         setUpToolber();
         initNavigationDrawer();
-
+//        HelperPDF.sharePdf("sdjkjkdfjk",MainActivity.this);
         fragmentTransaction(HomeFragment.newInstance(MainActivity.this));
         fragment = HomeFragment.newInstance(MainActivity.this);
         drawerLayout.setBackgroundColor(Color.parseColor("#FFFFFF"));
@@ -68,6 +72,13 @@ public class MainActivity extends AppCompatActivity {
 
     private void initNavigationDrawer() {
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        Menu menu = navigationView.getMenu();
+
+        // find MenuItem you want to change
+        MenuItem nav_version = menu.findItem(R.id.version);
+        nav_version.setTitle("v "+BuildConfig.VERSION_NAME);
+
+
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(MenuItem menuItem) {
@@ -95,6 +106,14 @@ public class MainActivity extends AppCompatActivity {
                         fragment = AboutUsFragment.newInstance(MainActivity.this);
                         drawerLayout.closeDrawers();
                         break;
+
+                    case R.id.exit:
+//                        Toast.makeText(getApplicationContext(), "Settings", Toast.LENGTH_SHORT).show();
+
+                        drawerLayout.closeDrawers();
+                        MainActivity.this.finish();
+                        break;
+
 
                 }
                 return true;
@@ -153,5 +172,22 @@ public class MainActivity extends AppCompatActivity {
         }
         super.onBackPressed();
 
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        // If request is cancelled, the result arrays are empty.
+        if (requestCode == 99) {
+            if (grantResults.length > 0
+                    && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                HelperPDF.sharePdf(GCGModesParser.buffer.toString(),MainActivity.this);
+                // permission was granted, yay! Do the
+                // contacts-related task you need to do.
+
+            }
+
+            // other 'case' lines to check for other
+            // permissions this app might request
+        }
     }
 }

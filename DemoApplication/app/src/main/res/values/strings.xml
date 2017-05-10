@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Green Card Go</string>
+    <string name="app_name">GreenCard Go!</string>
     <string name="drawer_open">Open</string>
     <string name="drawer_close">Close</string>
 
@@ -15,5 +15,9 @@ This app is for those who are primarily interested in ways to immigrate permanen
 
 Note:  This app is not intended for those who already have a green card, strangely enough that is a situation that we sometimes encounter when a person wants to "check" on how they obtained their card.
                                              </string>
-    <string name="headre_disclaimer_name">Discaimer</string>
+    <string name="headre_disclaimer_name">Disclaimer</string>
+
+    <string name="header_report_name">GreenCard Go! Report</string>
+
+
 </resources>

@@ -14,5 +14,14 @@
             android:id="@+id/about_us"
             android:title="ABOUT US" />
 
+        <item
+            android:id="@+id/exit"
+            android:title="EXIT" />
+        <item
+            android:id="@+id/version"
+            android:title="VERSION" />
+
+
+
     </group>
 </menu>
