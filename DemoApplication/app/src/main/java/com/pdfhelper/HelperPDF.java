@@ -699,7 +699,7 @@ public class HelperPDF {
             if (GCGModesParser.dicStateModeForPdf.containsKey("P42_OV1_TITLE") && GCGModesParser.dicStateModeForPdf.get("P42_OV1_TITLE") != null) {
                 buider.append("- Because you're option 1, you can:  "+getStateModeForPdfValue("P42_OV1_TITLE")+"\n");
             }
-            if (GCGModesParser.dicStateModeForPdf.containsKey("P42_OV2_TITLE") && GCGModesParser.dicStateModeForPdf.get("P41_OV2_TITLE") != null) {
+            if (GCGModesParser.dicStateModeForPdf.containsKey("P42_OV2_TITLE") && GCGModesParser.dicStateModeForPdf.get("P42_OV2_TITLE") != null) {
                 buider.append("- Because you're option 1, you can:  "+getStateModeForPdfValue("P42_OV2_TITLE")+"\n");
             }
            /* if (GCGModesParser.dicStateModeForPdf.containsKey("P42_OV2_TITLE") && GCGModesParser.dicStateModeForPdf.get("P42_OV2_TITLE") != null) {
