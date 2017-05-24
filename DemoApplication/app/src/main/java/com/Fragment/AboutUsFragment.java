@@ -11,9 +11,7 @@ import android.view.ViewGroup;
 
 import com.greencardgo.R;
 
-/**
- * Created by admin on 1/23/2017.
- */
+
 public class AboutUsFragment extends Fragment {
 
     public static AboutUsFragment newInstance(Context context) {

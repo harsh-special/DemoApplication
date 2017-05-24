@@ -30,9 +30,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-/**
- * Created by admin on 1/23/2017.
- */
+
 public class HomeFragment extends Fragment implements View.OnClickListener {
     private WebView tv_question;
     private WebView tv_question_text;

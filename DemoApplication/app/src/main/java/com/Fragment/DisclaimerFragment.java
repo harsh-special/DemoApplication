@@ -11,9 +11,7 @@ import android.webkit.WebView;
 
 import com.greencardgo.R;
 
-/**
- * Created by admin on 1/23/2017.
- */
+
 public class DisclaimerFragment extends Fragment{
 
 

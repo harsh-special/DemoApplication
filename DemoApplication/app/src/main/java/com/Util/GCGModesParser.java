@@ -17,9 +17,6 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-/**
- * Created by Bhavin on 2/1/2017.
- */
 public class GCGModesParser {
     public static String fromPoint = "";
     public static String toPoint = "toPoint";

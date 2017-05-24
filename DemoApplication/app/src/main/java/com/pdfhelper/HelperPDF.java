@@ -36,7 +36,6 @@ import java.io.InputStream;
 import java.io.OutputStream;
 
 
-@SuppressWarnings("ResultOfMethodCallIgnored")
 public class HelperPDF {
 
     public static String actualPath(Activity activity) {
