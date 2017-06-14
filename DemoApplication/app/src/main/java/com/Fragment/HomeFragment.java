@@ -259,7 +259,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         try {
             builder.append(GCGModesParser.dicCurrentState.has("body")
                     ?
-                    GCGModesParser.dicCurrentState.getString("body")
+                    getStateModeForPdfValue(GCGModesParser.dicCurrentState.getString("body"))
                     : "");
 
         } catch (JSONException e) {
@@ -270,7 +270,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 tv_question_text.setVisibility(
                         View.VISIBLE);
                 tv_question_text.getSettings().setJavaScriptEnabled(true);
-                tv_question_text.loadDataWithBaseURL("", GCGModesParser.dicCurrentState.getString("note"), "text/html", "UTF-8", "");
+                tv_question_text.loadDataWithBaseURL("", getStateModeForPdfValue(GCGModesParser.dicCurrentState.getString("note")), "text/html", "UTF-8", "");
             } else
                 tv_question_text.setVisibility(
                         View.GONE);
@@ -443,5 +443,14 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         }
         return false;
     }
+
+    private static String getStateModeForPdfValue(String key){
+        String valueFromJson=   GCGModesParser.jsonContantFile.optString(key).equalsIgnoreCase("")
+                ?
+                key
+                : GCGModesParser.jsonContantFile.optString(key);
+        return valueFromJson;
+    }
+
 
 }
