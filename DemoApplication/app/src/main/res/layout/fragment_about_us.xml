@@ -4,13 +4,15 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <TextView
+    <WebView
+        android:id="@+id/webview"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="20dp"
-        android:textColor="@android:color/black"
-        android:padding="10dp"
+        android:layout_height="match_parent"
+        android:fadeScrollbars="false"
         android:text="This is text This is text This is text This is text This is text This is text This is text \n This is text This is text This is text
-        \n This is text This is text This is text This is text This is text This is text This is text " />
+        \n This is text This is text This is text This is text This is text This is text This is text "
+        android:textColor="@android:color/black"
+        />
+
 
 </LinearLayout>
