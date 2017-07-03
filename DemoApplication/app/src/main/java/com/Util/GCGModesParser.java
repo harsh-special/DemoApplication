@@ -624,7 +624,11 @@ public class GCGModesParser {
                 value
                 : GCGModesParser.jsonContantFile.optString(value);
         dicStateModeForPdf.put(key, valueFromJson);
-        buffer.append(key + "\n" + valueFromJson + "\n\n");
+        String keyFromJson=   GCGModesParser.jsonContantFile.optString(key).equalsIgnoreCase("")
+                ?
+                key
+                : GCGModesParser.jsonContantFile.optString(key);
+        buffer.append(keyFromJson + "\n" + valueFromJson + "\n\n");
     }
 
 

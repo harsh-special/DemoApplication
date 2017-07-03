@@ -459,45 +459,45 @@ public class HelperPDF {
 
 
         if (GCGModesParser.arrQuestionaireSelected.contains("Option1")) {
-//            buider.append("- Because you're option 1, you can:  OV6\n");
+//            buider.append("-Because you're married to a citizen or green-card holder, you can:  OV6\n");
 
 
             if (GCGModesParser.dicStateMode.containsKey("M1_OV1_OPTION1") && GCGModesParser.dicStateMode.get("M1_OV1_OPTION1") != null) {
-                buider.append("- Because you're option 1, you can:  "+getStateModeForPdfValue("M1_OV1_TITLE")+"\n");
+                buider.append("-Because you're married to a citizen or green-card holder, you can:  "+getStateModeForPdfValue("M1_OV1_TITLE")+"\n");
             }
             if (GCGModesParser.dicStateModeForPdf.containsKey("M1_OV2_TITLE") && GCGModesParser.dicStateModeForPdf.get("M1_OV2_TITLE") != null) {
-                buider.append("- Because you're option 1, you can:  "+getStateModeForPdfValue("M1_OV2_TITLE")+"\n");
+                buider.append("-Because you're married to a citizen or green-card holder, you can:  "+getStateModeForPdfValue("M1_OV2_TITLE")+"\n");
             }
             if (GCGModesParser.dicStateMode.containsKey("M1_OV4_OPTION1") && GCGModesParser.dicStateMode.get("M1_OV4_OPTION1") != null) {
-                buider.append("- Because you're option 1, you can:  "+getStateModeForPdfValue("M1_OV4_TITLE")+"\n");
+                buider.append("-Because you're married to a citizen or green-card holder, you can:  "+getStateModeForPdfValue("M1_OV4_TITLE")+"\n");
             }
             if (GCGModesParser.dicStateMode.containsKey("M1_OV5_OPTION1") && GCGModesParser.dicStateMode.get("M1_OV5_OPTION1") != null) {
-                buider.append("- Because you're option 1, you can:  "+getStateModeForPdfValue("M1_OV5_TITLE")+"\n");
+                buider.append("-Because you're married to a citizen or green-card holder, you can:  "+getStateModeForPdfValue("M1_OV5_TITLE")+"\n");
             }
             if (GCGModesParser.dicStateMode.containsKey("M1_OV1_OPTION6") && GCGModesParser.dicStateMode.get("M1_OV1_OPTION6") != null) {
-                buider.append("- Because you're option 1, you can:  "+getStateModeForPdfValue("M1_OV6_TITLE")+"\n");
+                buider.append("-Because you're married to a citizen or green-card holder, you can:  "+getStateModeForPdfValue("M1_OV6_TITLE")+"\n");
             }
             if (GCGModesParser.dicStateModeForPdf.containsKey("P41_OV1_TITLE") && GCGModesParser.dicStateModeForPdf.get("P41_OV1_TITLE") != null) {
-                buider.append("- Because you're option 1, you can:  "+getStateModeForPdfValue("P41_OV1_TITLE")+"\n");
+                buider.append("-Because you're married to a citizen or green-card holder, you can:  "+getStateModeForPdfValue("P41_OV1_TITLE")+"\n");
             }
             if (GCGModesParser.dicStateModeForPdf.containsKey("P41_OV2_TITLE") && GCGModesParser.dicStateModeForPdf.get("P41_OV2_TITLE") != null) {
-                buider.append("- Because you're option 1, you can:  "+getStateModeForPdfValue("P41_OV2_TITLE")+"\n");
+                buider.append("-Because you're married to a citizen or green-card holder, you can:  "+getStateModeForPdfValue("P41_OV2_TITLE")+"\n");
             }
             if (GCGModesParser.dicStateModeForPdf.containsKey("P41_OV3_TITLE") && GCGModesParser.dicStateModeForPdf.get("P41_OV3_TITLE") != null) {
-                buider.append("- Because you're option 1, you can:  "+getStateModeForPdfValue("P41_OV3_TITLE")+"\n");
+                buider.append("-Because you're married to a citizen or green-card holder, you can:  "+getStateModeForPdfValue("P41_OV3_TITLE")+"\n");
             }
 
         }
 
         if (GCGModesParser.arrQuestionaireSelected.contains("Option2")) {
-//            buider.append("\n- Because you're option 2, you can:  OV3 [or OV7]\n");
+//            buider.append("\n- Because you have children, at least one of whom is or will be a citizen over 21, you can:  OV3 [or OV7]\n");
 
             if (GCGModesParser.dicStateMode.containsKey("M1_OV1_OPTION2") && GCGModesParser.dicStateMode.get("M1_OV1_OPTION2") != null) {
-                buider.append("- Because you're option 2, you can:  "+getStateModeForPdfValue("M1_OV1_TITLE")+"\n");
+                buider.append("- Because you have children, at least one of whom is or will be a citizen over 21, you can:  "+getStateModeForPdfValue("M1_OV1_TITLE")+"\n");
             }
 
             if (GCGModesParser.dicStateModeForPdf.containsKey("M1_OV3_TITLE") && GCGModesParser.dicStateModeForPdf.get("M1_OV3_TITLE") != null) {
-                buider.append("- Because you're option 2, you can:  "+getStateModeForPdfValue("M1_OV3_TITLE")+"\n");
+                buider.append("- Because you have children, at least one of whom is or will be a citizen over 21, you can:  "+getStateModeForPdfValue("M1_OV3_TITLE")+"\n");
             }
 
         }
@@ -505,16 +505,16 @@ public class HelperPDF {
         if (GCGModesParser.arrQuestionaireSelected.contains("Option3")) {
 
             if (GCGModesParser.dicStateMode.containsKey("M1_OV1_OPTION3") && GCGModesParser.dicStateMode.get("M1_OV1_OPTION3") != null) {
-                buider.append("- Because you're option 3, you can:  "+getStateModeForPdfValue("M1_OV1_TITLE")+"\n");
+                buider.append("- Because you're under 21 and unmarried and your parent is a citizen or green card-holder, you can:  "+getStateModeForPdfValue("M1_OV1_TITLE")+"\n");
             }
             if (GCGModesParser.dicStateModeForPdf.containsKey("M1_OV4_TITLE") && GCGModesParser.dicStateModeForPdf.get("M1_OV4_TITLE") != null) {
-                buider.append("- Because you're option 3, you can:  "+getStateModeForPdfValue("M1_OV4_TITLE")+"\n");
+                buider.append("- Because you're under 21 and unmarried and your parent is a citizen or green card-holder, you can:  "+getStateModeForPdfValue("M1_OV4_TITLE")+"\n");
             }
             if (GCGModesParser.dicStateModeForPdf.containsKey("M1_OV5_TITLE") && GCGModesParser.dicStateModeForPdf.get("M1_OV5_TITLE") != null) {
-                buider.append("- Because you're option 3, you can:  "+getStateModeForPdfValue("M1_OV5_TITLE")+"\n");
+                buider.append("- Because you're under 21 and unmarried and your parent is a citizen or green card-holder, you can:  "+getStateModeForPdfValue("M1_OV5_TITLE")+"\n");
             }
             if (GCGModesParser.dicStateModeForPdf.containsKey("M1_OV6_TITLE") && GCGModesParser.dicStateModeForPdf.get("M1_OV6_TITLE") != null) {
-                buider.append("- Because you're option 3, you can:  "+getStateModeForPdfValue("M1_OV6_TITLE")+"\n");
+                buider.append("- Because you're under 21 and unmarried and your parent is a citizen or green card-holder, you can:  "+getStateModeForPdfValue("M1_OV6_TITLE")+"\n");
             }
 
             if (GCGModesParser.dicStateModeForPdf.containsKey("M1_OC3_TITLE")
@@ -522,31 +522,31 @@ public class HelperPDF {
 
                 if (GCGModesParser.dicStateModeForPdf.containsKey("P61_D1_TITLE") && GCGModesParser.dicStateModeForPdf.get("P61_D1_TITLE") != null) {
                     if (GCGModesParser.dicStateModeForPdf.containsKey("P61_OV1_TITLE") && GCGModesParser.dicStateModeForPdf.get("P61_OV1_TITLE") != null) {
-                        buider.append("- Because you're P61, you can:  "+getStateModeForPdfValue("P61_OV1_TITLE")+"\n");
+                        buider.append("-  Because your parent had or will have a petition filed for them by their parent, sibling or employer, you can:  "+getStateModeForPdfValue("P61_OV1_TITLE")+"\n");
                     }
                     if (GCGModesParser.dicStateModeForPdf.containsKey("P61_OV2_TITLE") && GCGModesParser.dicStateModeForPdf.get("P61_OV2_TITLE") != null) {
-                        buider.append("- Because you're P61, you can:  "+getStateModeForPdfValue("P61_OV2_TITLE")+"\n");
+                        buider.append("-  Because your parent had or will have a petition filed for them by their parent, sibling or employer, you can:  "+getStateModeForPdfValue("P61_OV2_TITLE")+"\n");
                     }
                     if (GCGModesParser.dicStateModeForPdf.containsKey("P61_OV3_TITLE") && GCGModesParser.dicStateModeForPdf.get("P61_OV3_TITLE") != null) {
-                        buider.append("- Because you're P61, you can:  "+getStateModeForPdfValue("P61_OV3_TITLE")+"\n");
+                        buider.append("-  Because your parent had or will have a petition filed for them by their parent, sibling or employer, you can:  "+getStateModeForPdfValue("P61_OV3_TITLE")+"\n");
                     }
                     if (GCGModesParser.dicStateModeForPdf.containsKey("P61_OV4_TITLE") && GCGModesParser.dicStateModeForPdf.get("P61_OV4_TITLE") != null) {
-                        buider.append("- Because you're P61, you can:  "+getStateModeForPdfValue("P61_OV4_TITLE")+"\n");
+                        buider.append("-  Because your parent had or will have a petition filed for them by their parent, sibling or employer, you can:  "+getStateModeForPdfValue("P61_OV4_TITLE")+"\n");
                     }
                 }
 
                 else{
                     if (GCGModesParser.dicStateModeForPdf.containsKey("P61_OV1_TITLE") && GCGModesParser.dicStateModeForPdf.get("P61_OV1_TITLE") != null) {
-                        buider.append("- Because you're option 3, you can:  "+getStateModeForPdfValue("P61_OV1_TITLE")+"\n");
+                        buider.append("- Because you're under 21 and unmarried and your parent is a citizen or green card-holder, you can:  "+getStateModeForPdfValue("P61_OV1_TITLE")+"\n");
                     }
                     if (GCGModesParser.dicStateModeForPdf.containsKey("P61_OV2_TITLE") && GCGModesParser.dicStateModeForPdf.get("P61_OV2_TITLE") != null) {
-                        buider.append("- Because you're option 3, you can:  "+getStateModeForPdfValue("P61_OV2_TITLE")+"\n");
+                        buider.append("- Because you're under 21 and unmarried and your parent is a citizen or green card-holder, you can:  "+getStateModeForPdfValue("P61_OV2_TITLE")+"\n");
                     }
                     if (GCGModesParser.dicStateModeForPdf.containsKey("P61_OV3_TITLE") && GCGModesParser.dicStateModeForPdf.get("P61_OV3_TITLE") != null) {
-                        buider.append("- Because you're option 3, you can:  "+getStateModeForPdfValue("P61_OV3_TITLE")+"\n");
+                        buider.append("- Because you're under 21 and unmarried and your parent is a citizen or green card-holder, you can:  "+getStateModeForPdfValue("P61_OV3_TITLE")+"\n");
                     }
                     if (GCGModesParser.dicStateModeForPdf.containsKey("P61_OV4_TITLE") && GCGModesParser.dicStateModeForPdf.get("P61_OV4_TITLE") != null) {
-                        buider.append("- Because you're option 3, you can:  "+getStateModeForPdfValue("P61_OV4_TITLE")+"\n");
+                        buider.append("- Because you're under 21 and unmarried and your parent is a citizen or green card-holder, you can:  "+getStateModeForPdfValue("P61_OV4_TITLE")+"\n");
                     }
                 }
             }
@@ -559,16 +559,16 @@ public class HelperPDF {
 
             if (GCGModesParser.dicStateMode.containsKey("M1_D7_H8") && GCGModesParser.dicStateMode.get("M1_D7_H8").equalsIgnoreCase("yes")) {
                 if (GCGModesParser.dicStateModeForPdf.containsKey("M1_OV9_TITLE") && GCGModesParser.dicStateModeForPdf.get("M1_OV9_TITLE") != null) {
-                    buider.append("- Because you're option 4, you can:  "+getStateModeForPdfValue("M1_OV9_TITLE")+"\n");
+                    buider.append("- Because you have a job offer from a US employer willing to petition for a green card for you, you can:  "+getStateModeForPdfValue("M1_OV9_TITLE")+"\n");
                 }
             } else {
                 if (GCGModesParser.dicStateModeForPdf.containsKey("M1_D2_TITLE") && GCGModesParser.dicStateModeForPdf.get("M1_D2_TITLE").equalsIgnoreCase("yes")) {
 //                    if (GCGModesParser.dicStateModeForPdf.containsKey("M1_OV8_TITLE") && GCGModesParser.dicStateModeForPdf.get("M1_OV8_TITLE") != null) {
-                        buider.append("- Because you're option 4, you can:  "+getStateModeForPdfValue("M1_OV8_TITLE")+"\n");
+                        buider.append("- Because you have a job offer from a US employer willing to petition for a green card for you, you can:  "+getStateModeForPdfValue("M1_OV8_TITLE")+"\n");
 //                    }
                 } else {
 //                    if (GCGModesParser.dicStateModeForPdf.containsKey("M1_OV7_TITLE") && GCGModesParser.dicStateModeForPdf.get("M1_OV7_TITLE") != null) {
-                        buider.append("- Because you're option 4, you can: "+getStateModeForPdfValue("M1_OV7_TITLE")+"\n");
+                        buider.append("- Because you have a job offer from a US employer willing to petition for a green card for you, you can: "+getStateModeForPdfValue("M1_OV7_TITLE")+"\n");
 //                    }
                 }
             }
@@ -581,19 +581,19 @@ public class HelperPDF {
             if (GCGModesParser.dicStateMode.containsKey("M1_D7_H7") && GCGModesParser.dicStateMode.get("M1_D7_H7").equalsIgnoreCase("yes")) {
 
                 if (GCGModesParser.dicStateModeForPdf.containsKey("M1_OV9_TITLE") && GCGModesParser.dicStateModeForPdf.get("M1_OV9_TITLE") != null) {
-                    buider.append("- Because you have M1_D9, you can:  "+getStateModeForPdfValue("M1_OV9_TITLE")+"\n");
+                    buider.append("- Because you have a citizen sibling over 21, you can:  "+getStateModeForPdfValue("M1_OV9_TITLE")+"\n");
                 }
             } else {
 
                 if (GCGModesParser.dicStateModeForPdf.containsKey("M1_D2_TITLE") && GCGModesParser.dicStateModeForPdf.get("M1_D2_TITLE").equalsIgnoreCase("yes")) {
 
 //                    if (GCGModesParser.dicStateModeForPdf.containsKey("M1_OV8_TITLE") && GCGModesParser.dicStateModeForPdf.get("M1_OV8_TITLE") != null) {
-                        buider.append("- Because you have M1_D9, you can:  "+getStateModeForPdfValue("M1_OV8_TITLE")+"\n");
+                        buider.append("- Because you have a citizen sibling over 21, you can:  "+getStateModeForPdfValue("M1_OV8_TITLE")+"\n");
 //                    }
                 } else {
 
 //                    if (GCGModesParser.dicStateModeForPdf.containsKey("M1_OV7_TITLE") && GCGModesParser.dicStateModeForPdf.get("M1_OV7_TITLE") != null) {
-                        buider.append("- Because you have M1_D9, you can:  "+getStateModeForPdfValue("M1_OV7_TITLE")+"\n");
+                        buider.append("- Because you have a citizen sibling over 21, you can:  "+getStateModeForPdfValue("M1_OV7_TITLE")+"\n");
 //                    }
                 }
 
@@ -611,27 +611,27 @@ public class HelperPDF {
                 )
 
         {
-//            buider.append("\n- Because you're P52, you can:  P52_OV7\n");
+//            buider.append("\n- Because you had or will have a petition filed for you by your parent or sibling, you can:  P52_OV7\n");
             if (GCGModesParser.dicStateModeForPdf.containsKey("P51_OV1_TITLE") && GCGModesParser.dicStateModeForPdf.get("P51_OV1_TITLE") != null) {
-                buider.append("- Because you're P51, you can:  "+getStateModeForPdfValue("P51_OV1_TITLE")+"\n");
+                buider.append("- Because you had or will have a petition filed for you by your parent or sibling, you can:  "+getStateModeForPdfValue("P51_OV1_TITLE")+"\n");
             }
             if (GCGModesParser.dicStateModeForPdf.containsKey("P51_OV2_TITLE") && GCGModesParser.dicStateModeForPdf.get("P51_OV2_TITLE") != null) {
-                buider.append("- Because you're P51, you can:  "+getStateModeForPdfValue("P51_OV2_TITLE")+"\n");
+                buider.append("- Because you had or will have a petition filed for you by your parent or sibling, you can:  "+getStateModeForPdfValue("P51_OV2_TITLE")+"\n");
             }
             if (GCGModesParser.dicStateModeForPdf.containsKey("P51_OV3_TITLE") && GCGModesParser.dicStateModeForPdf.get("P51_OV3_TITLE") != null) {
-                buider.append("- Because you're P51, you can:  "+getStateModeForPdfValue("P51_OV3_TITLE")+"\n");
+                buider.append("- Because you had or will have a petition filed for you by your parent or sibling, you can:  "+getStateModeForPdfValue("P51_OV3_TITLE")+"\n");
             }
             if (GCGModesParser.dicStateModeForPdf.containsKey("P51_OV4_TITLE") && GCGModesParser.dicStateModeForPdf.get("P51_OV4_TITLE") != null) {
-                buider.append("- Because you're P51, you can:  "+getStateModeForPdfValue("P51_OV4_TITLE")+"\n");
+                buider.append("- Because you had or will have a petition filed for you by your parent or sibling, you can:  "+getStateModeForPdfValue("P51_OV4_TITLE")+"\n");
             }
             if (GCGModesParser.dicStateModeForPdf.containsKey("P51_OV5_TITLE") && GCGModesParser.dicStateModeForPdf.get("P51_OV5_TITLE") != null) {
-                buider.append("- Because you're P51, you can:  "+getStateModeForPdfValue("P51_OV5_TITLE")+"\n");
+                buider.append("- Because you had or will have a petition filed for you by your parent or sibling, you can:  "+getStateModeForPdfValue("P51_OV5_TITLE")+"\n");
             }
             if (GCGModesParser.dicStateModeForPdf.containsKey("P51_OV6_TITLE") && GCGModesParser.dicStateModeForPdf.get("P51_OV6_TITLE") != null) {
-                buider.append("- Because you're P51, you can:  "+getStateModeForPdfValue("P51_OV6_TITLE")+"\n");
+                buider.append("- Because you had or will have a petition filed for you by your parent or sibling, you can:  "+getStateModeForPdfValue("P51_OV6_TITLE")+"\n");
             }
             if (GCGModesParser.dicStateModeForPdf.containsKey("P51_OV7_TITLE") && GCGModesParser.dicStateModeForPdf.get("P51_OV7_TITLE") != null) {
-                buider.append("- Because you're P51, you can:  "+getStateModeForPdfValue("P51_OV7_TITLE")+"\n");
+                buider.append("- Because you had or will have a petition filed for you by your parent or sibling, you can:  "+getStateModeForPdfValue("P51_OV7_TITLE")+"\n");
             }
 
         }
@@ -640,18 +640,18 @@ public class HelperPDF {
         if (GCGModesParser.dicStateModeForPdf.containsKey("P61_D1_TITLE") && GCGModesParser.dicStateModeForPdf.get("P61_D1_TITLE") != null) {
             if (!GCGModesParser.dicStateModeForPdf.containsKey("M1_OC3_TITLE") || !GCGModesParser.dicStateModeForPdf.get("M1_OC3_TITLE").equalsIgnoreCase("M1_OC3_OPTIONC")) {
                 if (GCGModesParser.dicStateModeForPdf.containsKey("P61_OV1_TITLE") && GCGModesParser.dicStateModeForPdf.get("P61_OV1_TITLE") != null) {
-                    buider.append("- Because you're P61, you can:  "+getStateModeForPdfValue("P61_OV1_TITLE")+"\n");
+                    buider.append("-  Because your parent had or will have a petition filed for them by their parent, sibling or employer, you can:  "+getStateModeForPdfValue("P61_OV1_TITLE")+"\n");
                 }
                 if (GCGModesParser.dicStateModeForPdf.containsKey("P61_OV2_TITLE") && GCGModesParser.dicStateModeForPdf.get("P61_OV2_TITLE") != null) {
-                    buider.append("- Because you're P61, you can:  "+getStateModeForPdfValue("P61_OV2_TITLE")+"\n");
+                    buider.append("-  Because your parent had or will have a petition filed for them by their parent, sibling or employer, you can:  "+getStateModeForPdfValue("P61_OV2_TITLE")+"\n");
                 }
 
                 if (GCGModesParser.dicStateModeForPdf.containsKey("P61_OV3_TITLE") && GCGModesParser.dicStateModeForPdf.get("P61_OV3_TITLE") != null) {
-                    buider.append("- Because you're P61, you can:  "+getStateModeForPdfValue("P61_OV3_TITLE")+"\n");
+                    buider.append("-  Because your parent had or will have a petition filed for them by their parent, sibling or employer, you can:  "+getStateModeForPdfValue("P61_OV3_TITLE")+"\n");
                 }
 
                 if (GCGModesParser.dicStateModeForPdf.containsKey("P61_OV4_TITLE") && GCGModesParser.dicStateModeForPdf.get("P61_OV4_TITLE") != null) {
-                    buider.append("- Because you're P61, you can:  "+getStateModeForPdfValue("P61_OV4_TITLE")+"\n");
+                    buider.append("-  Because your parent had or will have a petition filed for them by their parent, sibling or employer, you can:  "+getStateModeForPdfValue("P61_OV4_TITLE")+"\n");
                 }
             }
         }
@@ -670,20 +670,20 @@ public class HelperPDF {
                     ||
                     GCGModesParser.dicStateMode.containsKey("OV1_H1BD3") && GCGModesParser.dicStateMode.get("OV1_H1BD3") != null
                     ) {
-                buider.append("- Because you're option 1, you can:  "+getStateModeForPdfValue("OV1_TITLE")+"\n");
+                buider.append("-Because you're married to a citizen or green-card holder, you can:  "+getStateModeForPdfValue("OV1_TITLE")+"\n");
             }
             if (GCGModesParser.dicStateMode.containsKey("OV2_H1AD2") && GCGModesParser.dicStateMode.get("OV2_H1AD2") != null) {
-                buider.append("- Because you're option 1, you can:  "+getStateModeForPdfValue("OV2_TITLE")+"\n");
+                buider.append("-Because you're married to a citizen or green-card holder, you can:  "+getStateModeForPdfValue("OV2_TITLE")+"\n");
             }
             if (GCGModesParser.dicStateMode.containsKey("OV3_H1BD2") && GCGModesParser.dicStateMode.get("OV3_H1BD2") != null
                     ||
                     GCGModesParser.dicStateMode.containsKey("OV3_OC1AD2") && GCGModesParser.dicStateMode.get("OV3_OC1AD2") != null
 
                     ) {
-                buider.append("- Because you're option 1, you can:  "+getStateModeForPdfValue("OV3_TITLE")+"\n");
+                buider.append("-Because you're married to a citizen or green-card holder, you can:  "+getStateModeForPdfValue("OV3_TITLE")+"\n");
             }
             if (GCGModesParser.dicStateModeForPdf.containsKey("OV5_TITLE") && GCGModesParser.dicStateModeForPdf.get("OV5_TITLE") != null) {
-                buider.append("- Because you're option 1, you can:  "+getStateModeForPdfValue("OV5_TITLE")+"\n");
+                buider.append("-Because you're married to a citizen or green-card holder, you can:  "+getStateModeForPdfValue("OV5_TITLE")+"\n");
             }
 
 
@@ -693,16 +693,16 @@ public class HelperPDF {
                     ||
                     GCGModesParser.dicStateMode.containsKey("OV6_OC1") && GCGModesParser.dicStateMode.get("OV6_OC1") != null
                     ) {
-                buider.append("- Because you're option 1, you can:  "+getStateModeForPdfValue("OV6_TITLE")+"\n");
+                buider.append("-Because you're married to a citizen or green-card holder, you can:  "+getStateModeForPdfValue("OV6_TITLE")+"\n");
             }
             if (GCGModesParser.dicStateModeForPdf.containsKey("P42_OV1_TITLE") && GCGModesParser.dicStateModeForPdf.get("P42_OV1_TITLE") != null) {
-                buider.append("- Because you're option 1, you can:  "+getStateModeForPdfValue("P42_OV1_TITLE")+"\n");
+                buider.append("-Because you're married to a citizen or green-card holder, you can:  "+getStateModeForPdfValue("P42_OV1_TITLE")+"\n");
             }
             if (GCGModesParser.dicStateModeForPdf.containsKey("P42_OV2_TITLE") && GCGModesParser.dicStateModeForPdf.get("P42_OV2_TITLE") != null) {
-                buider.append("- Because you're option 1, you can:  "+getStateModeForPdfValue("P42_OV2_TITLE")+"\n");
+                buider.append("-Because you're married to a citizen or green-card holder, you can:  "+getStateModeForPdfValue("P42_OV2_TITLE")+"\n");
             }
            /* if (GCGModesParser.dicStateModeForPdf.containsKey("P42_OV2_TITLE") && GCGModesParser.dicStateModeForPdf.get("P42_OV2_TITLE") != null) {
-                buider.append("- Because you're option 1, you can:  P42_OV2_TITLE\n");
+                buider.append("-Because you're married to a citizen or green-card holder, you can:  P42_OV2_TITLE\n");
             }*/
 
         }
@@ -715,7 +715,7 @@ public class HelperPDF {
                     ||
                     GCGModesParser.dicStateMode.containsKey("OV1_H4D3") && GCGModesParser.dicStateMode.get("OV1_H4D3") != null
                     ) {
-                buider.append("- Because you're option 2, you can:  "+getStateModeForPdfValue("OV1_TITLE")+"\n");
+                buider.append("- Because you have children, at least one of whom is or will be a citizen over 21, you can:  "+getStateModeForPdfValue("OV1_TITLE")+"\n");
             }
 
             if (GCGModesParser.dicStateMode.containsKey("OV3_OC2AD2") && GCGModesParser.dicStateMode.get("OV3_OC2AD2") != null
@@ -724,7 +724,7 @@ public class HelperPDF {
                     ||
                     GCGModesParser.dicStateMode.containsKey("OV3_H4D2") && GCGModesParser.dicStateMode.get("OV3_H4D2") != null
                     ) {
-                buider.append("- Because you're option 2, you can:  "+getStateModeForPdfValue("OV3_TITLE")+"\n");
+                buider.append("- Because you have children, at least one of whom is or will be a citizen over 21, you can:  "+getStateModeForPdfValue("OV3_TITLE")+"\n");
             }
 
             if (GCGModesParser.dicStateMode.containsKey("OV7_OC2") && GCGModesParser.dicStateMode.get("OV7_OC2") != null
@@ -733,7 +733,7 @@ public class HelperPDF {
                     ||
                     GCGModesParser.dicStateMode.containsKey("OV7_H4") && GCGModesParser.dicStateMode.get("OV7_H4") != null
                     ) {
-                buider.append("- Because you're option 2, you can:  "+getStateModeForPdfValue("OV7_TITLE")+"\n");
+                buider.append("- Because you have children, at least one of whom is or will be a citizen over 21, you can:  "+getStateModeForPdfValue("OV7_TITLE")+"\n");
             }
 
         }
@@ -745,20 +745,20 @@ public class HelperPDF {
                     ||
                     GCGModesParser.dicStateMode.containsKey("OV1_D8D3") && GCGModesParser.dicStateMode.get("OV1_D8D3") != null
                     ) {
-                buider.append("- Because you're option 3, you can:  "+getStateModeForPdfValue("OV1_TITLE")+"\n");
+                buider.append("- Because you're under 21 and unmarried and your parent is a citizen or green card-holder, you can:  "+getStateModeForPdfValue("OV1_TITLE")+"\n");
             }
 
             if (GCGModesParser.dicStateMode.containsKey("OV2_D9D2") && GCGModesParser.dicStateMode.get("OV2_D9D2") != null
 
                     ) {
-                buider.append("- Because you're option 3, you can:  "+getStateModeForPdfValue("OV2_TITLE")+"\n");
+                buider.append("- Because you're under 21 and unmarried and your parent is a citizen or green card-holder, you can:  "+getStateModeForPdfValue("OV2_TITLE")+"\n");
             }
             if (GCGModesParser.dicStateMode.containsKey("OV3_OC3AD2") && GCGModesParser.dicStateMode.get("OV3_OC3AD2") != null
                     ||
 
                     GCGModesParser.dicStateMode.containsKey("OV3_D8D2") && GCGModesParser.dicStateMode.get("OV3_D8D2") != null
                     ) {
-                buider.append("- Because you're option 3, you can:  "+getStateModeForPdfValue("OV3_TITLE")+"\n");
+                buider.append("- Because you're under 21 and unmarried and your parent is a citizen or green card-holder, you can:  "+getStateModeForPdfValue("OV3_TITLE")+"\n");
             }
 
 
@@ -774,35 +774,35 @@ public class HelperPDF {
                     GCGModesParser.dicStateMode.containsKey("OV8_OC3") && GCGModesParser.dicStateMode.get("OV8_OC3") != null
 
                     ) {
-                buider.append("- Because you're option 3, you can:  "+getStateModeForPdfValue("OV8_TITLE")+"\n");
+                buider.append("- Because you're under 21 and unmarried and your parent is a citizen or green card-holder, you can:  "+getStateModeForPdfValue("OV8_TITLE")+"\n");
             }
 
            /* if (GCGModesParser.dicStateModeForPdf.containsKey("OV7_TITLE") && GCGModesParser.dicStateModeForPdf.get("OV7_TITLE") != null) {
-                buider.append("- Because you're option 3, you can:  OV7_TITLE\n");
+                buider.append("- Because you're under 21 and unmarried and your parent is a citizen or green card-holder, you can:  OV7_TITLE\n");
             }*/
 
             if (GCGModesParser.dicStateModeForPdf.containsKey("OC3_TITLE") && GCGModesParser.dicStateModeForPdf.get("OC3_TITLE").equalsIgnoreCase("OC3_OPTIONC")) {
                 if (GCGModesParser.dicStateModeForPdf.containsKey("P62_D1_TITLE") && GCGModesParser.dicStateModeForPdf.get("P62_D1_TITLE") != null) {
                     if (GCGModesParser.dicStateModeForPdf.containsKey("P62_OV1_TITLE") && GCGModesParser.dicStateModeForPdf.get("P62_OV1_TITLE") != null) {
-                        buider.append("- Because you're P62, you can:  "+getStateModeForPdfValue("P62_OV1_TITLE")+"\n");
+                        buider.append("-  Because your parent had or will have a petition filed for them by their parent, sibling or employer, you can:  "+getStateModeForPdfValue("P62_OV1_TITLE")+"\n");
                     }
                     if (GCGModesParser.dicStateModeForPdf.containsKey("P62_OV2_TITLE") && GCGModesParser.dicStateModeForPdf.get("P62_OV2_TITLE") != null) {
-                        buider.append("- Because you're P62, you can:  "+getStateModeForPdfValue("P62_OV2_TITLE")+"\n");
+                        buider.append("-  Because your parent had or will have a petition filed for them by their parent, sibling or employer, you can:  "+getStateModeForPdfValue("P62_OV2_TITLE")+"\n");
                     }
                     if (GCGModesParser.dicStateModeForPdf.containsKey("P62_OV3_TITLE") && GCGModesParser.dicStateModeForPdf.get("P62_OV3_TITLE") != null) {
-                        buider.append("- Because you're P62, you can:  "+getStateModeForPdfValue("P62_OV3_TITLE")+"\n");
+                        buider.append("-  Because your parent had or will have a petition filed for them by their parent, sibling or employer, you can:  "+getStateModeForPdfValue("P62_OV3_TITLE")+"\n");
                     }
                 }
 
                 else{
                     if (GCGModesParser.dicStateModeForPdf.containsKey("P62_OV1_TITLE") && GCGModesParser.dicStateModeForPdf.get("P62_OV1_TITLE") != null) {
-                        buider.append("- Because you're option 3, you can:  "+getStateModeForPdfValue("P62_OV1_TITLE")+"\n");
+                        buider.append("- Because you're under 21 and unmarried and your parent is a citizen or green card-holder, you can:  "+getStateModeForPdfValue("P62_OV1_TITLE")+"\n");
                     }
                     if (GCGModesParser.dicStateModeForPdf.containsKey("P62_OV2_TITLE") && GCGModesParser.dicStateModeForPdf.get("P62_OV2_TITLE") != null) {
-                        buider.append("- Because you're option 3, you can:  "+getStateModeForPdfValue("P62_OV2_TITLE")+"\n");
+                        buider.append("- Because you're under 21 and unmarried and your parent is a citizen or green card-holder, you can:  "+getStateModeForPdfValue("P62_OV2_TITLE")+"\n");
                     }
                     if (GCGModesParser.dicStateModeForPdf.containsKey("P62_OV3_TITLE") && GCGModesParser.dicStateModeForPdf.get("P62_OV3_TITLE") != null) {
-                        buider.append("- Because you're option 3, you can:  "+getStateModeForPdfValue("P62_OV3_TITLE")+"\n");
+                        buider.append("- Because you're under 21 and unmarried and your parent is a citizen or green card-holder, you can:  "+getStateModeForPdfValue("P62_OV3_TITLE")+"\n");
                     }
                 }
             }
@@ -811,20 +811,20 @@ public class HelperPDF {
 
         if (GCGModesParser.arrQuestionaireSelected.contains("Option4")) {
             if (GCGModesParser.dicStateModeForPdf.containsKey("OV4_TITLE") && GCGModesParser.dicStateModeForPdf.get("OV4_TITLE") != null) {
-                buider.append("- Because you're option 4, you can: "+getStateModeForPdfValue("OV4_TITLE")+"\n");
+                buider.append("- Because you have a job offer from a US employer willing to petition for a green card for you, you can: "+getStateModeForPdfValue("OV4_TITLE")+"\n");
             }
             if (GCGModesParser.dicStateModeForPdf.containsKey("OV9_TITLE") && GCGModesParser.dicStateModeForPdf.get("OV9_TITLE") != null) {
-                buider.append("- Because you're option 4, you can:  "+getStateModeForPdfValue("OV9_TITLE")+"\n");
+                buider.append("- Because you have a job offer from a US employer willing to petition for a green card for you, you can:  "+getStateModeForPdfValue("OV9_TITLE")+"\n");
             }
 
         }
 
         if (GCGModesParser.dicStateModeForPdf.containsKey("D11_TITLE") && GCGModesParser.dicStateModeForPdf.get("D11_TITLE").equalsIgnoreCase("yes")) {
             if (GCGModesParser.dicStateModeForPdf.containsKey("OV4_TITLE") && GCGModesParser.dicStateModeForPdf.get("OV4_TITLE") != null) {
-                buider.append("- Because you have D11, you can: "+getStateModeForPdfValue("OV4_TITLE")+"\n");
+                buider.append("- Because you have a citizen sibling over 21, you can: "+getStateModeForPdfValue("OV4_TITLE")+"\n");
             }
             if (GCGModesParser.dicStateModeForPdf.containsKey("OV9_TITLE") && GCGModesParser.dicStateModeForPdf.get("OV9_TITLE") != null) {
-                buider.append("- Because you have D11, you can:  "+getStateModeForPdfValue("OV9_TITLE")+"\n");
+                buider.append("- Because you have a citizen sibling over 21, you can:  "+getStateModeForPdfValue("OV9_TITLE")+"\n");
             }
         }
 
@@ -836,25 +836,25 @@ public class HelperPDF {
                 (GCGModesParser.dicStateModeForPdf.containsKey("P52_H12_TITLE") && GCGModesParser.dicStateModeForPdf.get("P52_H12_TITLE") != null)
                 ) {
             if (GCGModesParser.dicStateModeForPdf.containsKey("P52_OV1_TITLE") && GCGModesParser.dicStateModeForPdf.get("P52_OV1_TITLE") != null) {
-                buider.append("- Because you're P52, you can:  "+getStateModeForPdfValue("P52_OV1_TITLE")+"\n");
+                buider.append("- Because you had or will have a petition filed for you by your parent or sibling, you can:  "+getStateModeForPdfValue("P52_OV1_TITLE")+"\n");
             }
             if (GCGModesParser.dicStateModeForPdf.containsKey("P52_OV2_TITLE") && GCGModesParser.dicStateModeForPdf.get("P52_OV2_TITLE") != null) {
-                buider.append("- Because you're P52, you can:  "+getStateModeForPdfValue("P52_OV2_TITLE")+"\n");
+                buider.append("- Because you had or will have a petition filed for you by your parent or sibling, you can:  "+getStateModeForPdfValue("P52_OV2_TITLE")+"\n");
             }
             if (GCGModesParser.dicStateModeForPdf.containsKey("P52_OV3_TITLE") && GCGModesParser.dicStateModeForPdf.get("P52_OV3_TITLE") != null) {
-                buider.append("- Because you're P52, you can:  "+getStateModeForPdfValue("P52_OV3_TITLE")+"\n");
+                buider.append("- Because you had or will have a petition filed for you by your parent or sibling, you can:  "+getStateModeForPdfValue("P52_OV3_TITLE")+"\n");
             }
             if (GCGModesParser.dicStateModeForPdf.containsKey("P52_OV4_TITLE") && GCGModesParser.dicStateModeForPdf.get("P52_OV4_TITLE") != null) {
-                buider.append("- Because you're P52, you can:  "+getStateModeForPdfValue("P52_OV4_TITLE")+"\n");
+                buider.append("- Because you had or will have a petition filed for you by your parent or sibling, you can:  "+getStateModeForPdfValue("P52_OV4_TITLE")+"\n");
             }
             if (GCGModesParser.dicStateModeForPdf.containsKey("P52_OV5_TITLE") && GCGModesParser.dicStateModeForPdf.get("P52_OV5_TITLE") != null) {
-                buider.append("- Because you're P52, you can:  "+getStateModeForPdfValue("P52_OV5_TITLE")+"\n");
+                buider.append("- Because you had or will have a petition filed for you by your parent or sibling, you can:  "+getStateModeForPdfValue("P52_OV5_TITLE")+"\n");
             }
             if (GCGModesParser.dicStateModeForPdf.containsKey("P52_OV6_TITLE") && GCGModesParser.dicStateModeForPdf.get("P52_OV6_TITLE") != null) {
-                buider.append("- Because you're P52, you can:  "+getStateModeForPdfValue("P52_OV6_TITLE")+"\n");
+                buider.append("- Because you had or will have a petition filed for you by your parent or sibling, you can:  "+getStateModeForPdfValue("P52_OV6_TITLE")+"\n");
             }
             if (GCGModesParser.dicStateModeForPdf.containsKey("P52_OV7_TITLE") && GCGModesParser.dicStateModeForPdf.get("P52_OV7_TITLE") != null) {
-                buider.append("- Because you're P52, you can:  "+getStateModeForPdfValue("P52_OV7_TITLE")+"\n");
+                buider.append("- Because you had or will have a petition filed for you by your parent or sibling, you can:  "+getStateModeForPdfValue("P52_OV7_TITLE")+"\n");
             }
 
         }
@@ -863,14 +863,14 @@ public class HelperPDF {
         if (GCGModesParser.dicStateModeForPdf.containsKey("P62_D1_TITLE") && GCGModesParser.dicStateModeForPdf.get("P62_D1_TITLE") != null) {
             if (!GCGModesParser.dicStateModeForPdf.containsKey("OC3_TITLE") || !GCGModesParser.dicStateModeForPdf.get("OC3_TITLE").equalsIgnoreCase("OC3_OPTIONC")) {
                 if (GCGModesParser.dicStateModeForPdf.containsKey("P62_OV1_TITLE") && GCGModesParser.dicStateModeForPdf.get("P62_OV1_TITLE") != null) {
-                    buider.append("- Because you're P62, you can:  "+getStateModeForPdfValue("P62_OV1_TITLE")+"\n");
+                    buider.append("-  Because your parent had or will have a petition filed for them by their parent, sibling or employer, you can:  "+getStateModeForPdfValue("P62_OV1_TITLE")+"\n");
                 }
                 if (GCGModesParser.dicStateModeForPdf.containsKey("P62_OV2_TITLE") && GCGModesParser.dicStateModeForPdf.get("P62_OV2_TITLE") != null) {
-                    buider.append("- Because you're P62, you can:  "+getStateModeForPdfValue("P62_OV2_TITLE")+"\n");
+                    buider.append("-  Because your parent had or will have a petition filed for them by their parent, sibling or employer, you can:  "+getStateModeForPdfValue("P62_OV2_TITLE")+"\n");
                 }
 
                 if (GCGModesParser.dicStateModeForPdf.containsKey("P62_OV3_TITLE") && GCGModesParser.dicStateModeForPdf.get("P62_OV3_TITLE") != null) {
-                    buider.append("- Because you're P62, you can:  "+getStateModeForPdfValue("P62_OV3_TITLE")+"\n");
+                    buider.append("-  Because your parent had or will have a petition filed for them by their parent, sibling or employer, you can:  "+getStateModeForPdfValue("P62_OV3_TITLE")+"\n");
                 }
             }
         }
@@ -881,54 +881,54 @@ public class HelperPDF {
         if (GCGModesParser.arrQuestionaireSelected.contains("Option1")) {
 
             if (GCGModesParser.dicStateMode.containsKey("M3_OV1_OPTION1") && GCGModesParser.dicStateMode.get("M3_OV1_OPTION1") != null) {
-                buider.append("- Because you're option 1, you can:  "+getStateModeForPdfValue("M3_OV1_TITLE")+"\n");
+                buider.append("-Because you're married to a citizen or green-card holder, you can:  "+getStateModeForPdfValue("M3_OV1_TITLE")+"\n");
             }
             if (GCGModesParser.dicStateMode.containsKey("M3_OV2_OPTION1") && GCGModesParser.dicStateMode.get("M3_OV2_OPTION1") != null) {
-                buider.append("- Because you're option 1, you can:  "+getStateModeForPdfValue("M3_OV2_TITLE")+"\n");
+                buider.append("-Because you're married to a citizen or green-card holder, you can:  "+getStateModeForPdfValue("M3_OV2_TITLE")+"\n");
             }
             if (GCGModesParser.dicStateModeForPdf.containsKey("P43_OV1_TITLE") && GCGModesParser.dicStateModeForPdf.get("P43_OV1_TITLE") != null) {
-                buider.append("- Because you're option 1, you can:  "+getStateModeForPdfValue("P43_OV1_TITLE")+"\n");
+                buider.append("-Because you're married to a citizen or green-card holder, you can:  "+getStateModeForPdfValue("P43_OV1_TITLE")+"\n");
             }
         }
 
         if (GCGModesParser.arrQuestionaireSelected.contains("Option2")) {
 
             if (GCGModesParser.dicStateMode.containsKey("M3_OV1_OPTION2") && GCGModesParser.dicStateMode.get("M3_OV1_OPTION2") != null) {
-                buider.append("- Because you're option 2, you can:  "+getStateModeForPdfValue("M3_OV1_TITLE")+"\n");
+                buider.append("- Because you have children, at least one of whom is or will be a citizen over 21, you can:  "+getStateModeForPdfValue("M3_OV1_TITLE")+"\n");
             }
 
             if (GCGModesParser.dicStateModeForPdf.containsKey("M3_OV3_TITLE") && GCGModesParser.dicStateModeForPdf.get("M3_OV3_TITLE") != null) {
-                buider.append("- Because you're option 2, you can:  "+getStateModeForPdfValue("M3_OV3_TITLE")+"\n");
+                buider.append("- Because you have children, at least one of whom is or will be a citizen over 21, you can:  "+getStateModeForPdfValue("M3_OV3_TITLE")+"\n");
             }
         }
 
         if (GCGModesParser.arrQuestionaireSelected.contains("Option3")) {
 
             if (GCGModesParser.dicStateMode.containsKey("M3_OV1_OPTION3") && GCGModesParser.dicStateMode.get("M3_OV1_OPTION3") != null) {
-                buider.append("- Because you're option 3, you can:  "+getStateModeForPdfValue("M3_OV1_TITLE")+"\n");
+                buider.append("- Because you're under 21 and unmarried and your parent is a citizen or green card-holder, you can:  "+getStateModeForPdfValue("M3_OV1_TITLE")+"\n");
             }
             if (GCGModesParser.dicStateMode.containsKey("M3_OV2_OPTION3") && GCGModesParser.dicStateMode.get("M3_OV2_OPTION3") != null) {
-                buider.append("- Because you're option 3, you can:  "+getStateModeForPdfValue("M3_OV2_TITLE")+"\n");
+                buider.append("- Because you're under 21 and unmarried and your parent is a citizen or green card-holder, you can:  "+getStateModeForPdfValue("M3_OV2_TITLE")+"\n");
             }
 
             if (GCGModesParser.dicStateModeForPdf.containsKey("M3_OC3_TITLE") && GCGModesParser.dicStateModeForPdf.get("M3_OC3_TITLE").equalsIgnoreCase("M3_OC3_OPTIONC")) {
 
                 if (GCGModesParser.dicStateModeForPdf.containsKey("P63_D1_TITLE") && GCGModesParser.dicStateModeForPdf.get("P63_D1_TITLE") != null) {
                     if (GCGModesParser.dicStateModeForPdf.containsKey("P63_OV1_TITLE") && GCGModesParser.dicStateModeForPdf.get("P63_OV1_TITLE") != null) {
-                        buider.append("- Because you're P63, you can:  "+getStateModeForPdfValue("P63_OV1_TITLE")+"\n");
+                        buider.append("-  Because your parent had or will have a petition filed for them by their parent, sibling or employer, you can:  "+getStateModeForPdfValue("P63_OV1_TITLE")+"\n");
                     }
                     if (GCGModesParser.dicStateModeForPdf.containsKey("P63_OV2_TITLE") && GCGModesParser.dicStateModeForPdf.get("P63_OV2_TITLE") != null) {
-                        buider.append("- Because you're P63, you can:  "+getStateModeForPdfValue("P63_OV2_TITLE")+"\n");
+                        buider.append("-  Because your parent had or will have a petition filed for them by their parent, sibling or employer, you can:  "+getStateModeForPdfValue("P63_OV2_TITLE")+"\n");
                     }
                 }
             }
 
             else{
                 if (GCGModesParser.dicStateModeForPdf.containsKey("P63_OV1_TITLE") && GCGModesParser.dicStateModeForPdf.get("P63_OV1_TITLE") != null) {
-                    buider.append("- Because you're option 3, you can:  "+getStateModeForPdfValue("P63_OV1_TITLE")+"\n");
+                    buider.append("- Because you're under 21 and unmarried and your parent is a citizen or green card-holder, you can:  "+getStateModeForPdfValue("P63_OV1_TITLE")+"\n");
                 }
                 if (GCGModesParser.dicStateModeForPdf.containsKey("P63_OV2_TITLE") && GCGModesParser.dicStateModeForPdf.get("P63_OV2_TITLE") != null) {
-                    buider.append("- Because you're option 3, you can:  "+getStateModeForPdfValue("P63_OV2_TITLE")+"\n");
+                    buider.append("- Because you're under 21 and unmarried and your parent is a citizen or green card-holder, you can:  "+getStateModeForPdfValue("P63_OV2_TITLE")+"\n");
                 }
             }
 
@@ -936,14 +936,14 @@ public class HelperPDF {
 
         if (GCGModesParser.arrQuestionaireSelected.contains("Option4")) {
             if (GCGModesParser.dicStateModeForPdf.containsKey("M3_OV4_TITLE") && GCGModesParser.dicStateModeForPdf.get("M3_OV4_TITLE") != null) {
-                buider.append("- Because you're option 4, you can: "+getStateModeForPdfValue("M3_OV4_TITLE")+"\n");
+                buider.append("- Because you have a job offer from a US employer willing to petition for a green card for you, you can: "+getStateModeForPdfValue("M3_OV4_TITLE")+"\n");
             }
         }
 
 
         if ((GCGModesParser.dicStateModeForPdf.containsKey("M3_D4_TITLE") && GCGModesParser.dicStateModeForPdf.get("M3_D4_TITLE").equalsIgnoreCase("yes"))) {
             if ((GCGModesParser.dicStateModeForPdf.containsKey("M3_OV4_TITLE") && GCGModesParser.dicStateModeForPdf.get("M3_OV4_TITLE")!=null)) {
-                buider.append("- Because you have M3_D4, you can:  "+getStateModeForPdfValue("M3_OV4_TITLE")+"\n");
+                buider.append("- Because you have a citizen sibling over 21, you can:  "+getStateModeForPdfValue("M3_OV4_TITLE")+"\n");
             }
         }
 
@@ -955,13 +955,13 @@ public class HelperPDF {
                 (GCGModesParser.dicStateModeForPdf.containsKey("P53_H10_TITLE") && GCGModesParser.dicStateModeForPdf.get("P53_H10_TITLE") != null)
                 ) {
             if (GCGModesParser.dicStateModeForPdf.containsKey("P53_OV1_TITLE") && GCGModesParser.dicStateModeForPdf.get("P53_OV1_TITLE") != null) {
-                buider.append("- Because you're P53, you can:  "+getStateModeForPdfValue("P53_OV1_TITLE")+"\n");
+                buider.append("- Because you had or will have a petition filed for you by your parent or sibling, you can:  "+getStateModeForPdfValue("P53_OV1_TITLE")+"\n");
             }
             if (GCGModesParser.dicStateModeForPdf.containsKey("P53_OV2_TITLE") && GCGModesParser.dicStateModeForPdf.get("P53_OV2_TITLE") != null) {
-                buider.append("- Because you're P53, you can:  "+getStateModeForPdfValue("P53_OV2_TITLE")+"\n");
+                buider.append("- Because you had or will have a petition filed for you by your parent or sibling, you can:  "+getStateModeForPdfValue("P53_OV2_TITLE")+"\n");
             }
             if (GCGModesParser.dicStateModeForPdf.containsKey("P53_OV3_TITLE") && GCGModesParser.dicStateModeForPdf.get("P53_OV3_TITLE") != null) {
-                buider.append("- Because you're P53, you can:  "+getStateModeForPdfValue("P53_OV3_TITLE")+"\n");
+                buider.append("- Because you had or will have a petition filed for you by your parent or sibling, you can:  "+getStateModeForPdfValue("P53_OV3_TITLE")+"\n");
             }
 
         }
@@ -969,10 +969,10 @@ public class HelperPDF {
         if (GCGModesParser.dicStateModeForPdf.containsKey("P63_D1_TITLE") && GCGModesParser.dicStateModeForPdf.get("P63_D1_TITLE") != null) {
             if (!GCGModesParser.dicStateModeForPdf.containsKey("M3_OC3_TITLE") || !GCGModesParser.dicStateModeForPdf.get("M3_OC3_TITLE").equalsIgnoreCase(getStateModeForPdfValue("M3_OC3_OPTIONC"))) {
                 if (GCGModesParser.dicStateModeForPdf.containsKey("P63_OV1_TITLE") && GCGModesParser.dicStateModeForPdf.get("P63_OV1_TITLE") != null) {
-                    buider.append("- Because you're P63, you can:  "+getStateModeForPdfValue("P63_OV1_TITLE")+"\n");
+                    buider.append("-  Because your parent had or will have a petition filed for them by their parent, sibling or employer, you can:  "+getStateModeForPdfValue("P63_OV1_TITLE")+"\n");
                 }
                 if (GCGModesParser.dicStateModeForPdf.containsKey("P63_OV2_TITLE") && GCGModesParser.dicStateModeForPdf.get("P63_OV2_TITLE") != null) {
-                    buider.append("- Because you're P63, you can:  "+getStateModeForPdfValue("P63_OV2_TITLE")+"\n");
+                    buider.append("-  Because your parent had or will have a petition filed for them by their parent, sibling or employer, you can:  "+getStateModeForPdfValue("P63_OV2_TITLE")+"\n");
                 }
 
 
@@ -1054,7 +1054,7 @@ public class HelperPDF {
         return builder.toString();
     }
 
-    private static String getStateModeForPdfValue(String key){
+    public static String getStateModeForPdfValue(String key){
         String valueFromJson=   GCGModesParser.jsonContantFile.optString(key).equalsIgnoreCase("")
                 ?
                 key

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +21,7 @@ import android.widget.Toast;
 
 import com.Util.GCGModesParser;
 import com.greencardgo.R;
+import com.pdfhelper.HelperPDF;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -317,7 +319,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
 
             if (currentStepType.equals("redRectangle")) {
-                cb.setText(arr_options.getJSONObject(i).getString("title"));
+                cb.setText(HelperPDF.getStateModeForPdfValue(arr_options.getJSONObject(i).getString("title")));
                 cb.setTag(arr_options.getJSONObject(i).getString("id"));
                 GCGModesParser.arrQuestionaireSelected.clear();
                 GCGModesParser.dicStateMode.remove("Option1");
@@ -347,7 +349,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             } else {
                 GCGModesParser.arrOctagonSelected.clear();
                 rg_options.setOrientation(LinearLayout.VERTICAL);
-                radioButton.setText(arr_options.getJSONObject(i).getString("title"));
+                radioButton.setText(HelperPDF.getStateModeForPdfValue(arr_options.getJSONObject(i).getString("title")));
                 radioButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                     @Override
                     public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
