@@ -1,15 +1,17 @@
 package com.Fragment;
 
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -17,7 +19,8 @@ import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.Toast;
+import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 
 import com.Util.GCGModesParser;
 import com.greencardgo.R;
@@ -38,7 +41,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     private WebView tv_question_text;
     private Button btn_yes, btn_no, btn_ok, btn_next;
     private ArrayList<String> al_que = new ArrayList<>();
-    private LinearLayout ll_diamond, ll_redRectangle, ll_oval, ll_checkbox;
+    private LinearLayout ll_redRectangle, ll_oval, ll_checkbox;
+    private RelativeLayout ll_diamond;
     private String modes_json_string;
     private JSONObject modes_json_object;
     private HashMap<String, JSONObject> dicMode = new HashMap<>();
@@ -46,6 +50,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     View view;
     private HashMap<CompoundButton, JSONArray> hQuestionarre;
     private HashMap<CompoundButton, JSONArray> hOctagon;
+    private ScrollView scrlView;
 
 
     public static HomeFragment newInstance(Context context) {
@@ -53,13 +58,14 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         Bundle args = new Bundle();
         args.putString("mTitleText", context.getResources().getString(R.string.app_name));
         HomeFragment fragment = new HomeFragment();
+        GCGModesParser.isPiPEntry=false;
         GCGModesParser.dicStateMode.clear();
         GCGModesParser.buffer.setLength(0);
         GCGModesParser.arrQuestionaireSelected.clear();
         GCGModesParser.arrOctagonSelected.clear();
         GCGModesParser.dicStateModeForPdf.clear();
         GCGModesParser parser = new GCGModesParser();
-        GCGModesParser.jsonContantFile=null;
+        GCGModesParser.jsonContantFile = null;
         fragment.setArguments(args);
         return fragment;
     }
@@ -82,12 +88,13 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         btn_no = (Button) v.findViewById(R.id.btn_no);
         btn_yes = (Button) v.findViewById(R.id.btn_yes);
         btn_ok = (Button) v.findViewById(R.id.btn_ok);
-        ll_diamond = (LinearLayout) v.findViewById(R.id.ll_diamond);
+        ll_diamond = (RelativeLayout) v.findViewById(R.id.ll_diamond);
         ll_redRectangle = (LinearLayout) v.findViewById(R.id.ll_redRectangle);
         ll_oval = (LinearLayout) v.findViewById(R.id.ll_oval);
         ll_checkbox = (LinearLayout) v.findViewById(R.id.ll_checkbox);
         btn_next = (Button) v.findViewById(R.id.btn_next);
         rg_options = new RadioGroup(getActivity());
+        scrlView = (ScrollView) v.findViewById(R.id.scrl_view);
     }
 
     private void setListner() {
@@ -148,6 +155,10 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     public void setDataToView() {
         if (GCGModesParser.currentStepType.equals("diamond")) {
             Log.e("TAG", "view diamond");
+            btn_next.setVisibility(View.GONE);
+            btn_yes.setVisibility(View.VISIBLE);
+            btn_no.setVisibility(View.VISIBLE);
+            btn_ok.setVisibility(View.GONE);
             ll_diamond.setVisibility(View.VISIBLE);
             ll_oval.setVisibility(View.GONE);
             ll_redRectangle.setVisibility(View.GONE);
@@ -156,9 +167,14 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             Log.e("TAG", "view redRectangle");
             if (GCGModesParser.arrQuestionaireSelected.size() > 0) {
                 if (GCGModesParser.dicStateMode.containsKey("AP_OV4")) {
-                    GCGModesParser.dicStateMode.put("D3","yes");
+                    GCGModesParser.dicStateMode.put("D3", "yes");
+                    GCGModesParser.isPiPEntry = true;
                     ll_redRectangle.setVisibility(View.VISIBLE);
-                    ll_diamond.setVisibility(View.GONE);
+                    btn_next.setVisibility(View.VISIBLE);
+                    btn_yes.setVisibility(View.GONE);
+                    btn_no.setVisibility(View.GONE);
+                    btn_ok.setVisibility(View.GONE);
+//                    ll_diamond.setVisibility(View.GONE);
                     ll_oval.setVisibility(View.GONE);
                     setupOptionsInQuestionaireView(GCGModesParser.currentStepType);
                     setTitleValue(GCGModesParser.currentStepText);
@@ -168,7 +184,11 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 }
             } else {
                 ll_redRectangle.setVisibility(View.VISIBLE);
-                ll_diamond.setVisibility(View.GONE);
+                btn_next.setVisibility(View.VISIBLE);
+                btn_yes.setVisibility(View.GONE);
+                btn_no.setVisibility(View.GONE);
+                btn_ok.setVisibility(View.GONE);
+//                ll_diamond.setVisibility(View.GONE);
                 ll_oval.setVisibility(View.GONE);
                 setupOptionsInQuestionaireView(GCGModesParser.currentStepType);
                 setTitleValue(GCGModesParser.currentStepText);
@@ -177,20 +197,32 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         } else if (GCGModesParser.currentStepType.equals("octagon")) {
             Log.e("TAG", "view octagon");
             ll_redRectangle.setVisibility(View.VISIBLE);
-            ll_diamond.setVisibility(View.GONE);
+            btn_next.setVisibility(View.VISIBLE);
+            btn_yes.setVisibility(View.GONE);
+            btn_no.setVisibility(View.GONE);
+            btn_ok.setVisibility(View.GONE);
+//            ll_diamond.setVisibility(View.GONE);
             ll_oval.setVisibility(View.GONE);
             setupOptionsInQuestionaireView(GCGModesParser.currentStepType);
             setTitleValue(GCGModesParser.currentStepText);
         } else if (GCGModesParser.currentStepType.equals("oval")) {
             ll_redRectangle.setVisibility(View.GONE);
-            ll_diamond.setVisibility(View.GONE);
+            btn_next.setVisibility(View.GONE);
+            btn_yes.setVisibility(View.GONE);
+            btn_no.setVisibility(View.GONE);
+            btn_ok.setVisibility(View.VISIBLE);
+//            ll_diamond.setVisibility(View.GONE);
             ll_oval.setVisibility(View.VISIBLE);
             setTitleValue(GCGModesParser.currentStepText);
         } else if (GCGModesParser.currentStepType.equals("yellowHexa")) {
             try {
                 if (GCGModesParser.dicCurrentState.getString("hasChoice").equals("yes")) {
                     ll_redRectangle.setVisibility(View.VISIBLE);
-                    ll_diamond.setVisibility(View.GONE);
+                    btn_next.setVisibility(View.VISIBLE);
+                    btn_yes.setVisibility(View.GONE);
+                    btn_no.setVisibility(View.GONE);
+                    btn_ok.setVisibility(View.GONE);
+//                    ll_diamond.setVisibility(View.GONE);
                     ll_oval.setVisibility(View.GONE);
                     setupOptionsInQuestionaireView(GCGModesParser.currentStepType);
 
@@ -198,7 +230,11 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
                 } else {
                     ll_redRectangle.setVisibility(View.GONE);
-                    ll_diamond.setVisibility(View.GONE);
+                    btn_next.setVisibility(View.GONE);
+                    btn_yes.setVisibility(View.GONE);
+                    btn_no.setVisibility(View.GONE);
+                    btn_ok.setVisibility(View.VISIBLE);
+//                    ll_diamond.setVisibility(View.GONE);
                     ll_oval.setVisibility(View.VISIBLE);
                     setTitleValue(GCGModesParser.currentStepText);
                 }
@@ -208,14 +244,19 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
         } else if (GCGModesParser.currentStepType.equals("-1")) {
             ll_redRectangle.setVisibility(View.GONE);
-            ll_diamond.setVisibility(View.GONE);
+            btn_next.setVisibility(View.GONE);
+            btn_yes.setVisibility(View.GONE);
+            btn_no.setVisibility(View.GONE);
+            btn_ok.setVisibility(View.GONE);
+//            ll_diamond.setVisibility(View.GONE);
             ll_oval.setVisibility(View.GONE);
-            setTitleValue("Thank you for using GreenCard! Go.  Please check your email and download the pdf file to see the options you've just selected and the recommended methods for you to immigrate to or remain in the US.  If you would like to run the app again with different options, just hit the Refresh or Home button. ");
+            setTitleValue("Thank you for using GreenCard Go!.  Please check your email and download the pdf file to see the options you've just selected and the recommended methods for you to immigrate to or remain in the US.  If you would like to run the app again with different options, just hit the Refresh or Home button. ");
         }
 
     }
 
     private void setTitleValue(String currentStepText) {
+        scrlView.scrollTo(0, 0);
         tv_question.scrollTo(0, 0);
         StringBuilder builder = new StringBuilder();
         if (hasKey(currentStepText)) {
@@ -259,19 +300,24 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         }
 //
         try {
-            builder.append(GCGModesParser.dicCurrentState.has("body")
-                    ?
-                    getStateModeForPdfValue(GCGModesParser.dicCurrentState.getString("body"))
-                    : "");
-
+            if (!currentStepText.contains("Thank you for using GreenCard Go!.  Please check your email and download the pdf file to see the options you've just selected and the recommended methods for you to immigrate to or remain in the US.  If you would like to run the app again with different options, just hit the Refresh or Home button. ")) {
+                builder.append(GCGModesParser.dicCurrentState.has("body")
+                        ?
+                        getStateModeForPdfValue(GCGModesParser.dicCurrentState.getString("body"))
+                        : "");
+            }
         } catch (JSONException e) {
             e.printStackTrace();
         }
         try {
             if (GCGModesParser.dicCurrentState.has("note")) {
+                tv_question.loadUrl("about:blank");
+                tv_question_text.loadUrl("about:blank");
                 tv_question_text.setVisibility(
                         View.VISIBLE);
                 tv_question_text.getSettings().setJavaScriptEnabled(true);
+                WebSettings ws = tv_question_text.getSettings();
+                ws.setDefaultFontSize(11);
                 tv_question_text.loadDataWithBaseURL("", getStateModeForPdfValue(GCGModesParser.dicCurrentState.getString("note")), "text/html", "UTF-8", "");
             } else
                 tv_question_text.setVisibility(
@@ -286,7 +332,11 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     }
 
     private void setData(String text) {
+        tv_question_text.loadUrl("about:blank");
+        tv_question.loadUrl("about:blank");
         tv_question.getSettings().setJavaScriptEnabled(true);
+        WebSettings ws = tv_question.getSettings();
+        ws.setDefaultFontSize(13);
         tv_question.loadDataWithBaseURL("", text, "text/html", "UTF-8", "");
     }
 
@@ -300,10 +350,14 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             RadioButton radioButton = null;
             if (currentStepType.equals("redRectangle")) {
                 cb = new CheckBox(getActivity());
+//                cb.setTextSize(11);
 
             } else {
                 radioButton = new RadioButton(getActivity());
+//                radioButton.setTextSize(11);
             }
+
+
             createRadioButton(cb, radioButton, currentStepType, i, arr_options);
 
         }
@@ -396,7 +450,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             if (hashMap.get("success").equals("true")) {
                 setDataToView();
             } else {
-                Toast.makeText(getActivity(), hashMap.get("title").toString(), Toast.LENGTH_LONG).show();
+                setDialog(hashMap.get("title").toString());
+//                Toast.makeText(getActivity(), hashMap.get("title").toString(), Toast.LENGTH_LONG).show();
             }
         } else if (v == btn_no) {
             GCGModesParser.moveToStepNo(getActivity());
@@ -409,7 +464,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                     GCGModesParser.moveToStepChoice(OptionID);
                     setDataToView();
                 } else {
-                    Toast.makeText(getActivity(), hashMap.get("title").toString(), Toast.LENGTH_LONG).show();
+                    setDialog(hashMap.get("title").toString());
+//                    Toast.makeText(getActivity(), hashMap.get("title").toString(), Toast.LENGTH_LONG).show();
                 }
             } else {
                 if (GCGModesParser.arrOctagonSelected.size() > 0) {
@@ -417,7 +473,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                     if (hashMap.get("success").equals("true")) {
                         GCGModesParser.moveToStepChoice(GCGModesParser.arrOctagonSelected.get(0));
                     } else {
-                        Toast.makeText(getActivity(), hashMap.get("title").toString(), Toast.LENGTH_LONG).show();
+                        setDialog(hashMap.get("title").toString());
+//                        Toast.makeText(getActivity(), hashMap.get("title").toString(), Toast.LENGTH_LONG).show();
                     }
                     setDataToView();
                 }
@@ -446,12 +503,30 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         return false;
     }
 
-    private static String getStateModeForPdfValue(String key){
-        String valueFromJson=   GCGModesParser.jsonContantFile.optString(key).equalsIgnoreCase("")
+    private static String getStateModeForPdfValue(String key) {
+        String valueFromJson = GCGModesParser.jsonContantFile.optString(key).equalsIgnoreCase("")
                 ?
                 key
                 : GCGModesParser.jsonContantFile.optString(key);
         return valueFromJson;
+    }
+
+    private void setDialog(String message) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setMessage(message);
+        builder.setCancelable(true);
+
+        builder.setPositiveButton(
+                "Ok",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+
+
+        AlertDialog alert = builder.create();
+        alert.show();
     }
 
 

@@ -4553,7 +4553,7 @@
       "id": "P53_D10",
       "type": "diamond",
       "title": "P53_D10_TITLE",
-      "body": "P53_D11_TITLE_BODY",
+      "body": "P53_D10_TITLE_BODY",
       "options": [{
         "optionA": "yes"
       }, {
@@ -4563,17 +4563,17 @@
         "toPoint": "P63_D1"
       },
       "optionB":[{
-        "positive": [],
+        "positive": ["P53_OC1_OPTIONE"],
         "negative": [],
         "exitType":"M3_PP3",
-        "toPoint": "M3_D5",
-        "contains": ["P51_D7"]
+        "toPoint": "M3_D5"
       },
         {
-          "positive": ["P53_OC1_OPTIONE"],
+          "positive": [],
           "negative": [],
           "exitType":"M3_PP3",
-          "toPoint": "M3_D5"
+          "toPoint": "M3_D5",
+          "contains": ["P53_D7"]
         },
         {
           "positive": [],

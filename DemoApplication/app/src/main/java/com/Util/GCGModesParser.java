@@ -2,7 +2,9 @@ package com.Util;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.support.v4.app.ActivityCompat;
@@ -45,10 +47,14 @@ public class GCGModesParser {
     public static HashMap<Object, String> dicStateMode = new HashMap<Object, String>();
 
     public static HashMap<Object, String> dicStateModeForPdf = new HashMap<Object, String>();
+    public static HashMap<Object, String> dicStateModeForPdfPIP = new HashMap<Object, String>();
     public static JSONObject dicCurrentState;
 
     public static JSONObject jsonContantFile = null;
 //    public static JSONObject dicStateMode;
+
+    public static boolean isPiPEntry;
+    public static HashMap<Object, String> dicStateModeForPIP = new HashMap<>();
 
     public static void setData(HashMap<Object, JSONObject> data) {
         dicMain = data;
@@ -92,6 +98,11 @@ public class GCGModesParser {
 
     public static void saveState(String key, String value) {
         dicStateMode.put(key, value);
+
+        if (isPiPEntry) {
+            Log.e("saveState","Save State for pip key="+key +" value"+value);
+            dicStateModeForPIP.put(key, value);
+        }
     }
 
     public static JSONArray choices() {
@@ -204,7 +215,7 @@ public class GCGModesParser {
                 boolean value = getNodeState("M1_D7");
                 if (!value) {
                     map.put("success", "false");
-                    map.put("title", "It's not possible to select No previously at M1_D7 and now select Yes at P51_D12.  Please try again and select No.");
+                    map.put("title", "Sorry, it's not possible to previously select that you will not be in-status (by the time the F2A petition's priority date is current) while now selecting that you will be in-status by the time the F1 petition's priority date is current (a much longer time period after).  Please try again and select No.");
                     map.put("optionID", "");
                     return map;
                 }
@@ -491,9 +502,9 @@ public class GCGModesParser {
                 if (dicCurrentState.getString("type").equalsIgnoreCase("redRectangle")) {
                     StringBuilder sb = new StringBuilder();
                     for (String s : arrQuestionaireSelected) {
-                        sb.append(s);
+                        sb.append(HelperPDF.getStateModeForPdfValue(s));
                         if (!s.equalsIgnoreCase(arrQuestionaireSelected.get(arrQuestionaireSelected.size() - 1))) {
-                            sb.append(",");
+                            sb.append(",\n");
                         }
                     }
 
@@ -514,9 +525,9 @@ public class GCGModesParser {
                 if (dicCurrentState.getString("type").equalsIgnoreCase("redRectangle")) {
                     StringBuilder sb = new StringBuilder();
                     for (String s : arrQuestionaireSelected) {
-                        sb.append(s);
+                        sb.append(HelperPDF.getStateModeForPdfValue(s));
                         if (!s.equalsIgnoreCase(arrQuestionaireSelected.get(arrQuestionaireSelected.size() - 1))) {
-                            sb.append(",");
+                            sb.append(",\n");
                         }
                     }
 
@@ -619,16 +630,21 @@ public class GCGModesParser {
     }
 
     private static void saveDataForPdf(String key, String value) {
-        String valueFromJson=   GCGModesParser.jsonContantFile.optString(value).equalsIgnoreCase("")
+        String valueFromJson = GCGModesParser.jsonContantFile.optString(value).equalsIgnoreCase("")
                 ?
                 value
                 : GCGModesParser.jsonContantFile.optString(value);
         dicStateModeForPdf.put(key, valueFromJson);
-        String keyFromJson=   GCGModesParser.jsonContantFile.optString(key).equalsIgnoreCase("")
+        String keyFromJson = GCGModesParser.jsonContantFile.optString(key).equalsIgnoreCase("")
                 ?
                 key
                 : GCGModesParser.jsonContantFile.optString(key);
         buffer.append(keyFromJson + "\n" + valueFromJson + "\n\n");
+
+        if (isPiPEntry) {
+            Log.e("saveState","Save State for pip key="+key +" value"+valueFromJson);
+            dicStateModeForPdfPIP.put(key, valueFromJson);
+        }
     }
 
 
@@ -651,7 +667,7 @@ public class GCGModesParser {
                         (currentNode.equalsIgnoreCase("M3_OC2") && optionSelected.equalsIgnoreCase("M3_OC2_OPTIONA")))) {
 
             map.put("success", "false");
-            map.put("title", "Since you've selected option 3, it's not possible to have A option.  Please try again.");
+            map.put("title", "Since you've selected that you're under 21, it's obviously not possible for you to have a child over 21.  Please try again.");
             map.put("optionID", "");
             return map;
         }
