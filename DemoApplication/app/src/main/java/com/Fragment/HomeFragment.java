@@ -61,6 +61,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         GCGModesParser.isPiPEntry=false;
         GCGModesParser.dicStateMode.clear();
         GCGModesParser.buffer.setLength(0);
+        GCGModesParser.dicStateModeForPdfPIP.clear();
+        GCGModesParser.dicStateModeForPIP.clear();
         GCGModesParser.arrQuestionaireSelected.clear();
         GCGModesParser.arrOctagonSelected.clear();
         GCGModesParser.dicStateModeForPdf.clear();
@@ -311,7 +313,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         }
         try {
             if (GCGModesParser.dicCurrentState.has("note")) {
-                tv_question.loadUrl("about:blank");
                 tv_question_text.loadUrl("about:blank");
                 tv_question_text.setVisibility(
                         View.VISIBLE);
@@ -332,7 +333,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     }
 
     private void setData(String text) {
-        tv_question_text.loadUrl("about:blank");
         tv_question.loadUrl("about:blank");
         tv_question.getSettings().setJavaScriptEnabled(true);
         WebSettings ws = tv_question.getSettings();
