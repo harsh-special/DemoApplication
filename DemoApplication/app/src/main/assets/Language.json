@@ -1,0 +1,14 @@
+{
+  "languages": [
+    {
+      "language": "English",
+      "code": "en",
+      "filename":"ConstantsFile.json"
+    },
+    {
+      "language": "Español",
+      "code": "es",
+      "filename":"ConstantsFileSpanish.json"
+    }
+  ]
+}

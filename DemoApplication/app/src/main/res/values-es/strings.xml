@@ -1,0 +1,134 @@
+<resources>
+    <string name="app_name">TarjetaVerde Go!</string>
+    <string name="drawer_open">Abierto</string>
+    <string name="drawer_close">Cerca</string>
+
+    <string name="headre_disclaimer_name">Renuncia</string>
+    <string name="headre_splash_disclaimer_name">Renuncia</string>
+    <string name="headre_general_instruction">Instrucciones Generales</string>
+
+    <string name="header_report_name">TarjetaVerde Go! Informe</string>
+
+
+    <string name="general_instruction_text"><![CDATA[
+         "<html><body>"
+     "<p align=\"justify\">"
+       "Esta aplicación es para aquellos que están interesados ​​principalmente en formas de inmigrar permanentemente a los Estados Unidos".
+"es decir, para obtener lo que se conoce como una" tarjeta verde ". Ya sea que ya se encuentre en los EE. UU. o actualmente fuera".
+"Obtener una tarjeta de residencia significa que tienes derecho a vivir y trabajar permanentemente en este país. Aunque esta aplicación sí cubre algunas".
+"Está menos enfocado en las formas no permanentes de visitar o permanecer en los EE. UU. ya que existen muchas de estas formas, que requieren una gran cantidad de recopilación de información y análisis".
+"En cambio, creemos que los usuarios de esta aplicación están más interesados ​​en inmigrar permanentemente a este país".
+"</p> "
+"<p align=\"justify\">"
+"Nota: esta aplicación no está diseñada para aquellos que ya tienen una tarjeta verde"
+"Curiosamente, esa es una situación que a veces nos encontramos cuando una persona quiere" verificar "cómo obtuvieron su tarjeta".
+          "</p> "
+     "</body></html>"
+        ]]>
+    </string>
+
+
+    <string name="disclaimer_text"><![CDATA[
+         "<html><body>"
+
+             "<p align=\"justify\">"
+"La información proporcionada por esta aplicación GreenCard Go! Sobre posibles métodos, si corresponde, para que usted obtenga una \" tarjeta verde \ "con el fin de ser un residente permanente legal de los Estados Unidos es proporcionado solo como información legal. NO pretende ser un asesoramiento legal".
+"Se han tomado todas las precauciones y esfuerzos para garantizar que esta aplicación contenga la información de inmigración más precisa y precisa;
+"GreenCard Go! No ofrece garantía ni representación alguna, ya sea expresa o implícita, en cuanto a la exactitud de dicha información".
+"Cualquier acción que tome o en la que confíe después de usar esta aplicación es su propia responsabilidad y GreenCard Go! No tiene responsabilidad ni conexión con dicha acción".
+"Se recomienda encarecidamente la consulta con un abogado de inmigración calificado para obtener asesoramiento y orientación definitivos para sus soluciones y planificación de inmigración".
+"como en el Bufete de abogados de Larry L. Doan, GuruImmigration.com, en Los Ángeles, California, el creador de esta aplicación".
+"</p> "
+"<p align=\"justify\">"
+"Además, si alguna vez ha sido arrestado, acusado, condenado por un delito en cualquier parte"
+"deportados o expulsados ​​de los EE. UU., tienen múltiples entradas ilegales en los EE. UU. o han tenido un historial de inmigración en los EE. UU., pero ahora viven fuera".
+"una consulta con un abogado de inmigración es absolutamente imprescindible, ya que esta aplicación solo proporciona información como"
+"a lo que es posible para una persona sin estos motivos de inadmisibilidad. Con estos motivos en sus registros"
+"Todavía es posible que obtenga una tarjeta verde, pero solo después de haber sido aprobado para ciertas exenciones o perdones difíciles o al satisfacer otras condiciones".
+"Solo un abogado calificado puede asesorarlo sobre estos pasos".
+"</p> "
+     "</body></html>"
+        ]]>
+    </string>
+
+    <string name="about_us_text"><![CDATA[
+         "<html><body>"
+
+             "<p align=\"justify\">"
+             Este app fue creado por La Oficina Legal de Larry L. Doan, GuruImmigration.com, en Los Angeles, California, quien lo proporciona solamente como informaci&oacute;n legal y NO como que consejo legal.
+
+     "</p> "
+     "</body></html>"
+        ]]>
+    </string>
+
+
+    <string name="splash_data">
+        <![CDATA[
+         "<html><body>"
+
+             "<p align=\"justify\">"
+          "La información proporcionada por esta aplicación GreenCard Go! Sobre posibles métodos, si corresponde, para que usted obtenga una \" tarjeta verde \ "con el fin de ser un residente permanente legal de los Estados Unidos es"
+"proporcionado solo como información legal. NO pretende ser un asesoramiento legal".
+"Se han tomado todas las precauciones y esfuerzos para garantizar que esta aplicación contenga la información de inmigración más precisa y precisa;
+"GreenCard Go! No ofrece garantía ni representación alguna, ya sea expresa o implícita, en cuanto a la exactitud de dicha información".
+"Cualquier acción que tome o en la que confíe después de usar esta aplicación es su propia responsabilidad y GreenCard Go! No tiene responsabilidad ni conexión con dicha acción".
+"Se recomienda encarecidamente la consulta con un abogado de inmigración calificado para obtener asesoramiento y orientación definitivos para sus soluciones y planificación de inmigración".
+"como en el Bufete de abogados de Larry L. Doan, GuruImmigration.com, en Los Ángeles, California, el creador de esta aplicación".
+"</p> "
+"<p align=\"justify\">"
+"Además, si alguna vez ha sido arrestado, acusado, condenado por un delito en cualquier parte"
+"deportados o expulsados ​​de los EE. UU., tienen múltiples entradas ilegales en los EE. UU. o han tenido un historial de inmigración en los EE. UU., pero ahora viven fuera".
+"una consulta con un abogado de inmigración es absolutamente imprescindible, ya que esta aplicación solo proporciona información como"
+"a lo que es posible para una persona sin estos motivos de inadmisibilidad. Con estos motivos en sus registros"
+"Todavía es posible que obtenga una tarjeta verde, pero solo después de haber sido aprobado para ciertas exenciones o perdones difíciles o al satisfacer otras condiciones".
+"Solo un abogado calificado puede asesorarlo sobre estos pasos".
+"</p> "
+
+     "</body></html>"
+        ]]>
+
+    </string>
+    <string name="nav_home">CASA</string>
+    <string name="nav_disclaimer">RENUNCIA</string>
+    <string name="nav_general_instruction">INSTRUCCIONES GENERALES</string>
+    <string name="nav_about_us">SOBRE NOSOTROS</string>
+    <string name="nav_exit">SALIDA</string>
+    <string name="nav_version">VERSIÓN</string>
+    <string name="agree">De Acuerdo</string>
+
+    <!--Pdf strings-->
+    <string name="pdf_header_name">Tarjetaverde Go! Informe</string>
+    <string name="pdf_actual_resposne_point">SPAIN_Below are all the actual responses that you\'ve inputted into the app and the action steps given:</string>
+
+    <string name="pdf_married_citizen">- Debido a que está casado con un ciudadano o titular de una tarjeta verde, puede:</string>
+    <string name="pdf_children_citizen">- Debido a que tiene hijos, al menos uno de los cuales es o será ciudadano mayor de 21 años, puede:</string>
+    <string name="pdf_unmarried_parent_citizen">- Debido a que es menor de 21 años y no está casado y su padre es ciudadano o poseedor de una tarjeta verde, usted puede:</string>
+    <string name="pdf_petition_parent_filed">- Debido a que su padre, hermano o empleador presentó o solicitará una petición para sus padres, usted puede:</string>
+    <string name="pdf_job_offer">- Debido a que tiene una oferta de trabajo de un empleador de los EE. UU. Dispuesto a solicitar una tarjeta verde para usted, puede:</string>
+    <string name="pdf_sibiling_twenty_one">- Porque tienes un hermano ciudadano mayor de 21 años, puedes:</string>
+    <string name="pdf_petition_filed_for_you">- Debido a que tuvo o tendrá una petición presentada por su padre o hermano, usted puede:</string>
+    <string name="pdf_summarize">Para resumir, estos son los pasos de acción que puede tomar para obtener la residencia permanente en los EE. UU .:</string>
+    <string name="pdf_action_steps">Estos son los pasos de acción que podría tomar para permanecer temporalmente en los EE. UU .:</string>
+
+    <string name="yes">sí</string>
+    <string name="no">nope</string>
+    <string name="ok">ok</string>
+
+    <string name="capital_first_yes">Sí</string>
+    <string name="capital_first_no">No</string>
+    <string name="capital_first_ok">Ok</string>
+    <string name="capital_first_next">Más</string>
+
+    <string name="option_under_twenty_one">Desde que Ud. seleccionó que es menor de 21 años, obviamente no es posible que tiene un(a) hijo(a) mayor de 21 años.  Favor de intentarlo de nuevo.</string>
+    <string name="option_one_three">No es posible que las opciones 1 y 3 sean verdaderas.  Favor de intentarlo de nuevo.</string>
+    <string name="option_none">No es posible que \'Ninguna de los anteriores\' y otra opción sean verdaderas.  Favor de intentarlo de nuevo.</string>
+    <string name="option_ftwoa">Lo sentimos, no puede seleccionar antes que Ud. no estará en estado legal (para el tiempo en que la fecha de prioridad de la petición F2A esté actual) mientras que ahora selecciona que estará en estado legal para el tiempo en que la fecha de prioridad de la petición F1 esté actual (un período de tiempo mucho más largo después).  Por favor, intente de nuevo y seleccione No.</string>
+
+    <string name="dialog_free_version_message">Es la veriosn gratis</string>
+    <string name="dialog_free_version_title">Surri</string>
+
+    <string name="mail_check">Gracias por usar GreenCard Go !. Revise su correo electrónico y descargue el archivo pdf para ver las opciones que acaba de seleccionar y los métodos recomendados para que usted inmigre o permanezca en los EE. UU. Si desea ejecutar la aplicación nuevamente con diferentes opciones, simplemente presione el botón Actualizar o Inicio.</string>
+
+    <string name="message_option_select">"Lo siento, necesita escoger al menos una opción.</string>
+</resources>
