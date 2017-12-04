@@ -4,13 +4,15 @@
     <string name="drawer_close">Close</string>
 
     <string name="headre_disclaimer_name">Disclaimer</string>
+    <string name="headre_splash_disclaimer_name">Disclaimer</string>
+    <string name="headre_general_instruction">General Instructions</string>
 
     <string name="header_report_name">GreenCard Go! Report</string>
 
-
+    <!--"<H2 align=\"center\"> DISCLAIMER: </H2>"-->
     <string name="disclaimer_text"><![CDATA[
          "<html><body>"
-             "<H2 align=\"center\"> DISCLAIMER: </H2>"
+
              "<p align=\"justify\">"
              "Information provided by this GreenCard Go! app on possible methods, if any, for you to obtain a \"green card\" in order to be a legal permanent resident of the United States is"
             " provided as legal information only.  It is absolutely NOT intended to be legal advice.  "
@@ -27,18 +29,18 @@
             "to what is possible for a person without these grounds of inadmissibility.  With these grounds on your records,"
             " it still may be possible for you to obtain a green card but only after being approved for certain difficult waivers or pardons or upon satisfying other conditions.  "
             "Only a qualified attorney can advise you on these steps."
-             "<H2 align=\"center\"> GENERAL INSTRUCTIONS: </H2>"
-     "</p> "
+              </p>
+
+     "</body></html>"
+]]>
+            </string>
+
+
+    <string name="general_instruction_text"><![CDATA[
+         "<html><body>"
      "<p align=\"justify\">"
-     "This app is for those who are primarily interested in ways to immigrate permanently to the United States, "
-    "that is, to obtain what is known as a \"green card.\"  Whether you are already in the US or currently outside, "
-    "obtaining a green card means that you are entitled to live and work permanently in this country.  Although this app does cover some, "
-    "it is less focused on non-permanent ways to visit or stay in the US as there are numerous such ways, which require a tremendous amount of information-gathering and analysis. "
-    " Instead, we believe that users of this app are more interested in permanently immigrating to this country."
-     "</p> "
-     "<p align=\"justify\">"
-     "Note:  This app is not intended for those who already have a green card, "
-    "strangely enough that is a situation that we sometimes encounter when a person wants to \"check\" on how they obtained their card."
+    This app is for those who are primarily interested in ways to immigrate permanently to the United States, that is, to obtain what is known as a \"green card.\" Whether you are already in the US or currently outside, obtaining a green card means that you are entitled to live and work permanently in this country. Although this app does cover some, it is less focused on non-permanent ways to visit or stay in the US as there are numerous such ways, which require a tremendous amount of information-gathering and analysis. Instead, we believe that users of this app are more interested in permanently immigrating to this country.</p>
+    <p align=\"justify\">Note: This app is not intended for those who already have a green card, strangely enough that is a situation that we sometimes encounter when a person wants to \"check\" on how they obtained their card.
      "</p> "
      "</body></html>"
         ]]>
@@ -46,12 +48,23 @@
 
     <string name="about_us_text"><![CDATA[
          "<html><body>"
-             "<H2 align=\"center\"> ABOUT US: </H2>"
              "<p align=\"justify\">"
+           This app was created by the Law Office of Larry L. Doan, GuruImmigration.com, in Los Angeles, California, who provides it only as legal information and NOT as legal advice.
+     "</p> "
+     "</body></html>"
+        ]]>
+    </string>
+
+
+    <string name="splash_data">
+        <![CDATA[
+         "<html><body>"
+             "<H2 align=\"center\"> DISCLAIMER: </H2>"
+            "<p align=\"justify\">"
              "Information provided by this GreenCard Go! app on possible methods, if any, for you to obtain a \"green card\" in order to be a legal permanent resident of the United States is"
             " provided as legal information only.  It is absolutely NOT intended to be legal advice.  "
-            "Every care and effort has been taken to ensure this app contains the latest and most accurate immigration information; however, "
-            "GreenCard Go! makes no warranty or representation whatsoever, whether express or implied, as to the accuracy of such information. "
+            "Every care and effort has been taken to ensure this app contains the latest and most accurate immigration information; however, G"
+            "reenCard Go! makes no warranty or representation whatsoever, whether express or implied, as to the accuracy of such information. "
             " Any action you take or rely upon after using this app is your own responsibility and GreenCard Go! bears no responsibility or connection to such action. "
             " Consultation with a qualified immigration attorney is highly recommended for definitive advice and guidance for your immigration solutions and planning, "
             "such as with the Law Office of Larry L. Doan, GuruImmigration.com, in Los Angeles, California, the creator of this app."
@@ -63,23 +76,54 @@
             "to what is possible for a person without these grounds of inadmissibility.  With these grounds on your records,"
             " it still may be possible for you to obtain a green card but only after being approved for certain difficult waivers or pardons or upon satisfying other conditions.  "
             "Only a qualified attorney can advise you on these steps."
-             "<H2 align=\"center\"> GENERAL INSTRUCTIONS: </H2>"
-     "</p> "
-     "<p align=\"justify\">"
-     "This app is for those who are primarily interested in ways to immigrate permanently to the United States, "
-    "that is, to obtain what is known as a \"green card.\"  Whether you are already in the US or currently outside, "
-    "obtaining a green card means that you are entitled to live and work permanently in this country.  Although this app does cover some, "
-    "it is less focused on non-permanent ways to visit or stay in the US as there are numerous such ways, which require a tremendous amount of information-gathering and analysis. "
-    " Instead, we believe that users of this app are more interested in permanently immigrating to this country."
-     "</p> "
-     "<p align=\"justify\">"
-     "Note:  This app is not intended for those who already have a green card, "
-    "strangely enough that is a situation that we sometimes encounter when a person wants to \"check\" on how they obtained their card."
-     "</p> "
+         </p>
+
      "</body></html>"
-        ]]>
+]]>
+
     </string>
+    <string name="nav_home">HOME</string>
+    <string name="nav_disclaimer">DISCLAIMER</string>
+    <string name="nav_general_instruction">GENERAL INSTRUCTIONS</string>
+    <string name="nav_about_us">ABOUT US</string>
+    <string name="nav_exit">EXIT</string>
+    <string name="nav_version">VERSION</string>
+    <string name="agree">Agree</string>
+
+    <!--Pdf strings-->
+    <string name="pdf_header_name">GreenCard Go! Report</string>
+    <string name="pdf_actual_resposne_point">Below are all the actual responses that you\'ve inputted into the app and the action steps given:</string>
+
+    <string name="pdf_married_citizen">- Because you\'re married to a citizen or green-card holder, you can: </string>
+    <string name="pdf_children_citizen">- Because you have children, at least one of whom is or will be a citizen over 21, you can: </string>
+    <string name="pdf_unmarried_parent_citizen">- Because you\'re under 21 and unmarried and your parent is a citizen or green card-holder, you can: </string>
+    <string name="pdf_petition_parent_filed">- Because your parent had or will have a petition filed for them by their parent, sibling or employer, you can:  </string>
+    <string name="pdf_job_offer">- Because you have a job offer from a US employer willing to petition for a green card for you, you can: </string>
+    <string name="pdf_sibiling_twenty_one">- Because you have a citizen sibling over 21, you can: </string>
+    <string name="pdf_petition_filed_for_you">- Because you had or will have a petition filed for you by your parent or sibling, you can: </string>
+    <string name="pdf_summarize">To summarize, these are the action steps you could take to obtain permanent residence in the US:</string>
+    <string name="pdf_action_steps">These are the action steps you could take to stay temporarily in the US:</string>
+
+    <string name="yes">yes</string>
+    <string name="no">no</string>
+    <string name="ok">ok</string>
+
+    <string name="capital_first_yes">Yes</string>
+    <string name="capital_first_no">No</string>
+    <string name="capital_first_ok">Ok</string>
+    <string name="capital_first_next">Next</string>
 
 
+    <string name="option_under_twenty_one">Since you\'ve selected that you\'re under 21, it\'s obviously not possible for you to have a child over 21.  Please try again.</string>
+    <string name="option_one_three">It is not possible for options 1 and 3 to both be true. Please try again</string>
+    <string name="option_none">It is not possible for \'None of the above\' and another option to both be true. Please try again</string>
+    <string name="option_ftwoa">Sorry, it\'s not possible to previously select that you will not be in-status (by the time the F2A petition\'s priority date is current) while now selecting that you will be in-status by the time the F1 petition\'s priority date is current (a much longer time period after).  Please try again and select No.</string>
+
+    <string name="dialog_free_version_message">You need to purchase paid application to generate report.</string>
+    <string name="dialog_free_version_title">Sorry</string>
+
+    <string name="mail_check">Thank you for using GreenCard Go!.  Please check your email and download the pdf file to see the options you\'ve just selected and the recommended methods for you to immigrate to or remain in the US.  If you would like to run the app again with different options, just hit the Refresh or Home button. </string>
+
+    <string name="message_option_select">Sorry, you must choose at least one option.</string>
 
 </resources>

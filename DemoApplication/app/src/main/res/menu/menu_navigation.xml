@@ -4,22 +4,27 @@
 
         <item
             android:id="@+id/home"
-            android:title="HOME"
+            android:title="@string/nav_home"
             />
         <item
             android:id="@+id/disclaimer"
-            android:title="DISCLAIMER"
+            android:title="@string/nav_disclaimer"
+            />
+        />
+        <item
+            android:id="@+id/generalinstruction"
+            android:title="@string/nav_general_instruction"
             />
         <item
             android:id="@+id/about_us"
-            android:title="ABOUT US" />
+            android:title="@string/nav_about_us" />
 
         <item
             android:id="@+id/exit"
-            android:title="EXIT" />
+            android:title="@string/nav_exit" />
         <item
             android:id="@+id/version"
-            android:title="VERSION" />
+            android:title="@string/nav_version" />
 
 
 

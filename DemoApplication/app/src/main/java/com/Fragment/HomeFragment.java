@@ -23,6 +23,7 @@ import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 
 import com.Util.GCGModesParser;
+import com.greencardgo.BuildConfig;
 import com.greencardgo.R;
 import com.pdfhelper.HelperPDF;
 
@@ -30,13 +31,12 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 
 public class HomeFragment extends Fragment implements View.OnClickListener {
+    private static String file;
     private WebView tv_question;
     private WebView tv_question_text;
     private Button btn_yes, btn_no, btn_ok, btn_next;
@@ -53,12 +53,13 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     private ScrollView scrlView;
 
 
-    public static HomeFragment newInstance(Context context) {
+    public static HomeFragment newInstance(Context context, String fileName) {
 
         Bundle args = new Bundle();
         args.putString("mTitleText", context.getResources().getString(R.string.app_name));
+        GCGModesParser.setContext(context);
         HomeFragment fragment = new HomeFragment();
-        GCGModesParser.isPiPEntry=false;
+        GCGModesParser.isPiPEntry = false;
         GCGModesParser.dicStateMode.clear();
         GCGModesParser.buffer.setLength(0);
         GCGModesParser.dicStateModeForPdfPIP.clear();
@@ -68,6 +69,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         GCGModesParser.dicStateModeForPdf.clear();
         GCGModesParser parser = new GCGModesParser();
         GCGModesParser.jsonContantFile = null;
+        file=fileName;
         fragment.setArguments(args);
         return fragment;
     }
@@ -107,7 +109,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     }
 
     private void getContentsFromJsonFile() {
-        modes_json_string = loadJSONFromAsset("Modes.json");
+        modes_json_string = GCGModesParser.loadJSONFromAsset("Modes.json", getActivity());
         try {
             modes_json_object = new JSONObject(modes_json_string);
             Log.e("TAG", "modes_json_object===>" + modes_json_object);
@@ -122,23 +124,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
     }
 
-
-    private String loadJSONFromAsset(String jsonFile) {
-        String json = null;
-        try {
-            InputStream is = getActivity().getAssets().open(jsonFile);
-            int size = is.available();
-            byte[] buffer = new byte[size];
-            is.read(buffer);
-            is.close();
-            json = new String(buffer, "UTF-8");
-
-        } catch (IOException ex) {
-            ex.printStackTrace();
-            return null;
-        }
-        return json;
-    }
 
     private void loadParser() {
         JSONObject jsonObject = dicMode.get("json");
@@ -245,14 +230,32 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             }
 
         } else if (GCGModesParser.currentStepType.equals("-1")) {
-            ll_redRectangle.setVisibility(View.GONE);
-            btn_next.setVisibility(View.GONE);
-            btn_yes.setVisibility(View.GONE);
-            btn_no.setVisibility(View.GONE);
-            btn_ok.setVisibility(View.GONE);
+            if (BuildConfig.APPLICATION_ID.equalsIgnoreCase("com.greencardgo.paid")) {
+                ll_redRectangle.setVisibility(View.GONE);
+                btn_next.setVisibility(View.GONE);
+                btn_yes.setVisibility(View.GONE);
+                btn_no.setVisibility(View.GONE);
+                btn_ok.setVisibility(View.GONE);
 //            ll_diamond.setVisibility(View.GONE);
-            ll_oval.setVisibility(View.GONE);
-            setTitleValue("Thank you for using GreenCard Go!.  Please check your email and download the pdf file to see the options you've just selected and the recommended methods for you to immigrate to or remain in the US.  If you would like to run the app again with different options, just hit the Refresh or Home button. ");
+                ll_oval.setVisibility(View.GONE);
+                setTitleValue(getActivity().getResources().getString(R.string.mail_check) + " ");
+            } else {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                builder.setMessage(getActivity().getResources().getString(R.string.dialog_free_version_message));
+                builder.setCancelable(true);
+                builder.setTitle(getActivity().getResources().getString(R.string.dialog_free_version_title));
+                builder.setPositiveButton(
+                        getActivity().getResources().getString(R.string.ok),
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                            }
+                        });
+
+
+                AlertDialog alert = builder.create();
+                alert.show();
+            }
         }
 
     }
@@ -267,6 +270,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                     GCGModesParser.jsonContantFile.optString(currentStepText).equalsIgnoreCase("")
                             ?
                             currentStepText
+
                             : GCGModesParser.jsonContantFile.optString(currentStepText)
             );
             builder.append("</p></span></h3></body></html>");
@@ -302,7 +306,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         }
 //
         try {
-            if (!currentStepText.contains("Thank you for using GreenCard Go!.  Please check your email and download the pdf file to see the options you've just selected and the recommended methods for you to immigrate to or remain in the US.  If you would like to run the app again with different options, just hit the Refresh or Home button. ")) {
+            if (!currentStepText.contains(getActivity().getResources().getString(R.string.mail_check) + " ")) {
                 builder.append(GCGModesParser.dicCurrentState.has("body")
                         ?
                         getStateModeForPdfValue(GCGModesParser.dicCurrentState.getString("body"))
@@ -318,7 +322,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                         View.VISIBLE);
                 tv_question_text.getSettings().setJavaScriptEnabled(true);
                 WebSettings ws = tv_question_text.getSettings();
-                ws.setDefaultFontSize(11);
+                ws.setDefaultFontSize(13);
                 tv_question_text.loadDataWithBaseURL("", getStateModeForPdfValue(GCGModesParser.dicCurrentState.getString("note")), "text/html", "UTF-8", "");
             } else
                 tv_question_text.setVisibility(
@@ -336,7 +340,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         tv_question.loadUrl("about:blank");
         tv_question.getSettings().setJavaScriptEnabled(true);
         WebSettings ws = tv_question.getSettings();
-        ws.setDefaultFontSize(13);
+        ws.setDefaultFontSize(16);
         tv_question.loadDataWithBaseURL("", text, "text/html", "UTF-8", "");
     }
 
@@ -488,7 +492,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     private void getContentsFromConstantFile() {
 
         try {
-            GCGModesParser.jsonContantFile = new JSONObject(loadJSONFromAsset("ConstantsFile.json"));
+            GCGModesParser.jsonContantFile = new JSONObject(GCGModesParser.loadJSONFromAsset(file, getActivity()));
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -517,7 +521,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         builder.setCancelable(true);
 
         builder.setPositiveButton(
-                "Ok",
+                getActivity().getResources().getString(R.string.ok),
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         dialog.cancel();

@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 
 import com.greencardgo.R;
@@ -31,7 +32,8 @@ public class DisclaimerFragment extends Fragment{
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_disclaimer, null, false);
         webview= (WebView) view.findViewById(R.id.webview);
-
+        WebSettings ws = webview.getSettings();
+        ws.setDefaultFontSize(16);
         text=getActivity().getResources().getString(R.string.disclaimer_text);
         setData();
 

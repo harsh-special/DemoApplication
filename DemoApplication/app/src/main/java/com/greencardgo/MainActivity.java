@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
     private DrawerLayout drawerLayout;
     private Toolbar toolbar;
     private Fragment fragment;
+    private Menu menu1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,8 +39,8 @@ public class MainActivity extends AppCompatActivity {
         setUpToolber();
         initNavigationDrawer();
 //        HelperPDF.sharePdf("sdjkjkdfjk",MainActivity.this);
-        fragmentTransaction(HomeFragment.newInstance(MainActivity.this));
-        fragment = HomeFragment.newInstance(MainActivity.this);
+        fragmentTransaction(HomeFragment.newInstance(MainActivity.this, getIntent().getStringExtra("FileName")));
+        fragment = HomeFragment.newInstance(MainActivity.this, getIntent().getStringExtra("FileName"));
         drawerLayout.setBackgroundColor(Color.parseColor("#FFFFFF"));
     }
 
@@ -72,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void initNavigationDrawer() {
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        Menu menu = navigationView.getMenu();
+        final Menu menu = navigationView.getMenu();
 
         // find MenuItem you want to change
         MenuItem nav_version = menu.findItem(R.id.version);
@@ -89,8 +90,9 @@ public class MainActivity extends AppCompatActivity {
 
                     case R.id.home:
 //                        Toast.makeText(getApplicationContext(), "HomeFragment", Toast.LENGTH_SHORT).show();
-                        fragmentTransaction(HomeFragment.newInstance(MainActivity.this));
-                        fragment = DisclaimerFragment.newInstance(MainActivity.this);
+                        fragmentTransaction(HomeFragment.newInstance(MainActivity.this, getIntent().getStringExtra("FileName")));
+                        fragment = HomeFragment.newInstance(MainActivity.this, getIntent().getStringExtra("FileName"));
+                        menu1.findItem(R.id.action_cart).setVisible(true);
                         drawerLayout.closeDrawers();
                         break;
 
@@ -98,12 +100,22 @@ public class MainActivity extends AppCompatActivity {
 //                        Toast.makeText(getApplicationContext(), "HomeFragment", Toast.LENGTH_SHORT).show();
                         fragmentTransaction(DisclaimerFragment.newInstance(MainActivity.this));
                         fragment = DisclaimerFragment.newInstance(MainActivity.this);
+                        menu1.findItem(R.id.action_cart).setVisible(false);
+                        drawerLayout.closeDrawers();
+                        break;
+
+                    case R.id.generalinstruction:
+//                        Toast.makeText(getApplicationContext(), "HomeFragment", Toast.LENGTH_SHORT).show();
+                        fragmentTransaction(GeneralInstructionFragment.newInstance(MainActivity.this));
+                        fragment = GeneralInstructionFragment.newInstance(MainActivity.this);
+                        menu1.findItem(R.id.action_cart).setVisible(false);
                         drawerLayout.closeDrawers();
                         break;
                     case R.id.about_us:
 //                        Toast.makeText(getApplicationContext(), "Settings", Toast.LENGTH_SHORT).show();
                         fragmentTransaction(AboutUsFragment.newInstance(MainActivity.this));
                         fragment = AboutUsFragment.newInstance(MainActivity.this);
+                        menu1.findItem(R.id.action_cart).setVisible(false);
                         drawerLayout.closeDrawers();
                         break;
 
@@ -125,6 +137,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.refresh, menu);
+        this.menu1=menu;
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -134,7 +147,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (id == R.id.action_cart) {
             // do something here
-            fragmentTransaction(HomeFragment.newInstance(MainActivity.this));
+            fragmentTransaction(HomeFragment.newInstance(MainActivity.this,getIntent().getStringExtra("FileName")));
         }
         return super.onOptionsItemSelected(item);
     }
