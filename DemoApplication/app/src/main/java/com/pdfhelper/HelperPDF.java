@@ -170,10 +170,10 @@ public class HelperPDF {
         }
     }
 
-    private static File createFile() {
+    private static File createFile(Context mContext) {
 //        InputStream in;
 //        OutputStream out;
-        String title = "GreenCard";
+        String title = mContext.getResources().getString(R.string.header_report_name);
 
 //        String folder =  "/Android/data/de.baumann.pdf/";
 //        String path =  Environment.getExternalStorageDirectory() +
@@ -301,7 +301,7 @@ public class HelperPDF {
 
 
     public static void sharePdf(String paragraph, Context mContext) {
-        File pdfFile = createFile();
+        File pdfFile = createFile(mContext);
         convertToPdf(pdfFile, paragraph, mContext);
         if (pdfFile.exists()) {
 
@@ -479,13 +479,13 @@ public class HelperPDF {
                 buider.append(mContext.getResources().getString(R.string.pdf_married_citizen) + "  " + getStateModeForPdfValue("M1_OV6_TITLE") + "\n");
             }
             if (dicStateModeForPdfPIP.containsKey("P41_OV1_TITLE") && dicStateModeForPdfPIP.get("P41_OV1_TITLE") != null) {
-                buider.append(mContext.getResources().getString(R.string.pdf_married_citizen) + "  " + getStateModeForPdfValue("P41_OV1_TITLE") + "\n");
+                buider.append(mContext.getResources().getString(R.string.pdf_petition_filed_spouse) + "  " + getStateModeForPdfValue("P41_OV1_TITLE") + "\n");
             }
             if (dicStateModeForPdfPIP.containsKey("P41_OV2_TITLE") && dicStateModeForPdfPIP.get("P41_OV2_TITLE") != null) {
-                buider.append(mContext.getResources().getString(R.string.pdf_married_citizen) + "  " + getStateModeForPdfValue("P41_OV2_TITLE") + "\n");
+                buider.append(mContext.getResources().getString(R.string.pdf_petition_filed_spouse) + "  " + getStateModeForPdfValue("P41_OV2_TITLE") + "\n");
             }
             if (dicStateModeForPdfPIP.containsKey("P41_OV3_TITLE") && dicStateModeForPdfPIP.get("P41_OV3_TITLE") != null) {
-                buider.append(mContext.getResources().getString(R.string.pdf_married_citizen) +" " + getStateModeForPdfValue("P41_OV3_TITLE") + "\n");
+                buider.append(mContext.getResources().getString(R.string.pdf_petition_filed_spouse) +" " + getStateModeForPdfValue("P41_OV3_TITLE") + "\n");
             }
 
         }
@@ -561,7 +561,7 @@ public class HelperPDF {
                     buider.append(mContext.getResources().getString(R.string.pdf_job_offer)+" " + getStateModeForPdfValue("M1_OV9_TITLE") + "\n");
                 }
             } else {
-                if (dicStateModeForPdfPIP.containsKey("M1_D2_TITLE") && dicStateModeForPdfPIP.get("M1_D2_TITLE").equalsIgnoreCase("yes")) {
+                if (dicStateModeForPdfPIP.containsKey("M1_D2_TITLE") && dicStateModeForPdfPIP.get("M1_D2_TITLE").equalsIgnoreCase(mContext.getResources().getString(R.string.yes))) {
 //                    if (dicStateModeForPdfPIP.containsKey("M1_OV8_TITLE") && dicStateModeForPdfPIP.get("M1_OV8_TITLE") != null) {
                     buider.append(mContext.getResources().getString(R.string.pdf_job_offer)+" "  + getStateModeForPdfValue("M1_OV8_TITLE") + "\n");
 //                    }
@@ -574,7 +574,7 @@ public class HelperPDF {
         }
 
 
-        if (dicStateModeForPdfPIP.containsKey("M1_D9_TITLE") && dicStateModeForPdfPIP.get("M1_D9_TITLE").equalsIgnoreCase("yes")) {
+        if (dicStateModeForPdfPIP.containsKey("M1_D9_TITLE") && dicStateModeForPdfPIP.get("M1_D9_TITLE").equalsIgnoreCase(mContext.getResources().getString(R.string.yes))) {
 
 
             if (dicStateModeForPIP.containsKey("M1_D7_H7") && dicStateModeForPIP.get("M1_D7_H7").equalsIgnoreCase("yes")) {
@@ -584,7 +584,7 @@ public class HelperPDF {
                 }
             } else {
 
-                if (dicStateModeForPdfPIP.containsKey("M1_D2_TITLE") && dicStateModeForPdfPIP.get("M1_D2_TITLE").equalsIgnoreCase("yes")) {
+                if (dicStateModeForPdfPIP.containsKey("M1_D2_TITLE") && dicStateModeForPdfPIP.get("M1_D2_TITLE").equalsIgnoreCase(mContext.getResources().getString(R.string.yes))) {
 
 //                    if (dicStateModeForPdfPIP.containsKey("M1_OV8_TITLE") && dicStateModeForPdfPIP.get("M1_OV8_TITLE") != null) {
                     buider.append(mContext.getResources().getString(R.string.pdf_sibiling_twenty_one)+" " + getStateModeForPdfValue("M1_OV8_TITLE") + "\n");
@@ -695,10 +695,10 @@ public class HelperPDF {
                 buider.append(mContext.getResources().getString(R.string.pdf_married_citizen) + "  " + getStateModeForPdfValue("OV6_TITLE") + "\n");
             }
             if (dicStateModeForPdfPIP.containsKey("P42_OV1_TITLE") && dicStateModeForPdfPIP.get("P42_OV1_TITLE") != null) {
-                buider.append(mContext.getResources().getString(R.string.pdf_married_citizen) + " " + getStateModeForPdfValue("P42_OV1_TITLE") + "\n");
+                buider.append(mContext.getResources().getString(R.string.pdf_petition_filed_spouse) + " " + getStateModeForPdfValue("P42_OV1_TITLE") + "\n");
             }
             if (dicStateModeForPdfPIP.containsKey("P42_OV2_TITLE") && dicStateModeForPdfPIP.get("P42_OV2_TITLE") != null) {
-                buider.append(mContext.getResources().getString(R.string.pdf_married_citizen) + " " + getStateModeForPdfValue("P42_OV2_TITLE") + "\n");
+                buider.append(mContext.getResources().getString(R.string.pdf_petition_filed_spouse) + " " + getStateModeForPdfValue("P42_OV2_TITLE") + "\n");
             }
            /* if (dicStateModeForPdfPIP.containsKey("P42_OV2_TITLE") && dicStateModeForPdfPIP.get("P42_OV2_TITLE") != null) {
                 buider.append("-Because you're married to a citizen or green-card holder, you can:  P42_OV2_TITLE\n");
@@ -816,7 +816,7 @@ public class HelperPDF {
 
         }
 
-        if (dicStateModeForPdfPIP.containsKey("D11_TITLE") && dicStateModeForPdfPIP.get("D11_TITLE").equalsIgnoreCase("yes")) {
+        if (dicStateModeForPdfPIP.containsKey("D11_TITLE") && dicStateModeForPdfPIP.get("D11_TITLE").equalsIgnoreCase(mContext.getResources().getString(R.string.yes))) {
             if (dicStateModeForPdfPIP.containsKey("OV4_TITLE") && dicStateModeForPdfPIP.get("OV4_TITLE") != null) {
                 buider.append(mContext.getResources().getString(R.string.pdf_sibiling_twenty_one)+" "  + getStateModeForPdfValue("OV4_TITLE") + "\n");
             }
@@ -884,7 +884,7 @@ public class HelperPDF {
                 buider.append(mContext.getResources().getString(R.string.pdf_married_citizen) + " " + getStateModeForPdfValue("M3_OV2_TITLE") + "\n");
             }
             if (dicStateModeForPdfPIP.containsKey("P43_OV1_TITLE") && dicStateModeForPdfPIP.get("P43_OV1_TITLE") != null) {
-                buider.append(mContext.getResources().getString(R.string.pdf_married_citizen) + " " + getStateModeForPdfValue("P43_OV1_TITLE") + "\n");
+                buider.append(mContext.getResources().getString(R.string.pdf_petition_filed_spouse) + " " + getStateModeForPdfValue("P43_OV1_TITLE") + "\n");
             }
         }
 
@@ -936,7 +936,7 @@ public class HelperPDF {
         }
 
 
-        if ((dicStateModeForPdfPIP.containsKey("M3_D4_TITLE") && dicStateModeForPdfPIP.get("M3_D4_TITLE").equalsIgnoreCase("yes"))) {
+        if ((dicStateModeForPdfPIP.containsKey("M3_D4_TITLE") && dicStateModeForPdfPIP.get("M3_D4_TITLE").equalsIgnoreCase(mContext.getResources().getString(R.string.yes)))) {
             if ((dicStateModeForPdfPIP.containsKey("M3_OV4_TITLE") && dicStateModeForPdfPIP.get("M3_OV4_TITLE") != null)) {
                 buider.append(mContext.getResources().getString(R.string.pdf_sibiling_twenty_one)+" " + getStateModeForPdfValue("M3_OV4_TITLE") + "\n");
             }
@@ -984,14 +984,14 @@ public class HelperPDF {
 
         Log.e("HelperPdf Pip", GCGModesParser.dicStateModeForPIP.toString());
         Log.e("HelperPdf pip pdf", GCGModesParser.dicStateModeForPdfPIP.toString());
-        if (GCGModesParser.dicStateModeForPdf.containsKey("D1_TITLE") && GCGModesParser.dicStateModeForPdf.get("D1_TITLE").equalsIgnoreCase("no")) {
+        if (GCGModesParser.dicStateModeForPdf.containsKey("D1_TITLE") && GCGModesParser.dicStateModeForPdf.get("D1_TITLE").equalsIgnoreCase( mContext.getResources().getString(R.string.no))) {
             if (GCGModesParser.isPiPEntry) {
                 printForMode3(builder, GCGModesParser.dicStateModeForPdfPIP, GCGModesParser.dicStateModeForPIP,mContext);
             } else
                 printForMode3(builder, GCGModesParser.dicStateModeForPdf, GCGModesParser.dicStateMode,mContext);
         }
 
-        if (GCGModesParser.dicStateModeForPdf.containsKey("D4_TITLE") && GCGModesParser.dicStateModeForPdf.get("D4_TITLE").equalsIgnoreCase("yes")) {
+        if (GCGModesParser.dicStateModeForPdf.containsKey("D4_TITLE") && GCGModesParser.dicStateModeForPdf.get("D4_TITLE").equalsIgnoreCase(mContext.getResources().getString(R.string.yes))) {
             if (GCGModesParser.isPiPEntry) {
                 printForMode1(builder, GCGModesParser.dicStateModeForPdfPIP, GCGModesParser.dicStateModeForPIP,mContext);
             } else

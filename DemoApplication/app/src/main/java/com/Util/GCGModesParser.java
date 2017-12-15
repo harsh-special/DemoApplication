@@ -89,7 +89,7 @@ public class GCGModesParser {
 
     public static boolean getNodeState(String key) {
         if (dicStateMode.containsKey(key)) {
-            if (dicStateMode.get(key).equals(mContext.getResources().getString(R.string.yes))) {
+            if (dicStateMode.get(key).equals("yes")) {
                 return true;
             } else {
                 return false;
@@ -151,7 +151,7 @@ public class GCGModesParser {
                 String nextStep = jsonObject1.getString(String.valueOf(GCGModesParser.toPoint));
                 currentRootNode = nextStep;
                 saveDataForPdf(dicCurrentState.getString(GCGModesParser.title), mContext.getResources().getString(R.string.no));
-                saveState(dicCurrentState.getString(String.valueOf(GCGModesParser.id)), mContext.getResources().getString(R.string.no));
+                saveState(dicCurrentState.getString(String.valueOf(GCGModesParser.id)), "no");
                 if (currentRootNode.equalsIgnoreCase("-1")) {
 
                     askingPermission(mContext);
@@ -166,7 +166,7 @@ public class GCGModesParser {
                 JSONArray jsonArray1 = (JSONArray) dicCurrentState.get(String.valueOf(GCGModesParser.options));
                 String toPoint = getToPointFromOptions((JSONArray) safeDicCurrentState);
                 saveDataForPdf(dicCurrentState.getString(GCGModesParser.title), mContext.getResources().getString(R.string.no));
-                saveState(dicCurrentState.getString(String.valueOf(GCGModesParser.id)), mContext.getResources().getString(R.string.no));
+                saveState(dicCurrentState.getString(String.valueOf(GCGModesParser.id)), "no");
 
                 if (toPoint.equalsIgnoreCase("-1")) {
 
@@ -232,7 +232,7 @@ public class GCGModesParser {
                 String nextStep = jsonObject1.getString(String.valueOf(GCGModesParser.toPoint));
                 currentRootNode = nextStep;
                 saveDataForPdf(dicCurrentState.getString(GCGModesParser.title), mContext.getResources().getString(R.string.yes));
-                saveState(dicCurrentState.getString(String.valueOf(GCGModesParser.id)), mContext.getResources().getString(R.string.yes));
+                saveState(dicCurrentState.getString(String.valueOf(GCGModesParser.id)), "yes");
                 dicCurrentState = jsonObject_mode2.getJSONObject(String.valueOf(currentRootNode));
                 currentStepText = dicCurrentState.getString(String.valueOf(GCGModesParser.title));
                 currentStepType = dicCurrentState.getString(String.valueOf(GCGModesParser.type));
@@ -240,7 +240,7 @@ public class GCGModesParser {
                 JSONArray jsonArray1 = (JSONArray) dicCurrentState.get(String.valueOf(GCGModesParser.options));
                 String toPoint = getToPointFromOptions((JSONArray) safeDicCurrentState);
                 saveDataForPdf(dicCurrentState.getString(GCGModesParser.title), mContext.getResources().getString(R.string.yes));
-                saveState(dicCurrentState.getString(String.valueOf(GCGModesParser.id)), mContext.getResources().getString(R.string.yes));
+                saveState(dicCurrentState.getString(String.valueOf(GCGModesParser.id)), "yes");
                 dicCurrentState = jsonObject_mode2.getJSONObject(String.valueOf(toPoint));
                 currentStepText = dicCurrentState.getString(String.valueOf(GCGModesParser.title));
                 currentStepType = dicCurrentState.getString(String.valueOf(GCGModesParser.type));
@@ -308,7 +308,7 @@ public class GCGModesParser {
 
                 if (jsonArray1.getJSONObject(i).opt(GCGModesParser.exitType) != null && jsonArray1.getJSONObject(i).opt(GCGModesParser.exitType) instanceof String) {
                     removeValueForPPKey();
-                    saveState(jsonArray1.getJSONObject(i).getString(GCGModesParser.exitType), mContext.getResources().getString(R.string.yes));
+                    saveState(jsonArray1.getJSONObject(i).getString(GCGModesParser.exitType), "yes");
                 }
 
                 if (jsonArray1.getJSONObject(i).opt("contains") != null && jsonArray1.getJSONObject(i).opt("contains") instanceof JSONArray) {
@@ -443,7 +443,7 @@ public class GCGModesParser {
                 String nextStep = safeDicCurrentState.getString(String.valueOf(GCGModesParser.toPoint));
                 if (safeDicCurrentState.opt(GCGModesParser.exitType) != null) {
                     removeValueForPPKey();
-                    saveState(safeDicCurrentState.getString(GCGModesParser.exitType), mContext.getResources().getString(R.string.yes));
+                    saveState(safeDicCurrentState.getString(GCGModesParser.exitType), "yes");
                 }
                 currentRootNode = nextStep;
                 saveDataForPdf(dicCurrentState.getString(GCGModesParser.title), mContext.getResources().getString(R.string.ok));
@@ -452,7 +452,7 @@ public class GCGModesParser {
                     currentStepType = "-1";
                 }
 
-                saveState(dicCurrentState.getString(String.valueOf(GCGModesParser.id)), mContext.getResources().getString(R.string.yes));
+                saveState(dicCurrentState.getString(String.valueOf(GCGModesParser.id)), "yes");
                 dicCurrentState = jsonObject_mode2.getJSONObject(String.valueOf(currentRootNode));
                 currentStepText = dicCurrentState.getString(String.valueOf(GCGModesParser.title));
                 currentStepType = dicCurrentState.getString(String.valueOf(GCGModesParser.type));
@@ -467,7 +467,7 @@ public class GCGModesParser {
                     currentStepType = "-1";
                 }
 
-                saveState(dicCurrentState.getString(String.valueOf(GCGModesParser.id)), mContext.getResources().getString(R.string.yes));
+                saveState(dicCurrentState.getString(String.valueOf(GCGModesParser.id)), "yes");
                 dicCurrentState = jsonObject_mode2.getJSONObject(String.valueOf(toPoint));
                 currentStepText = dicCurrentState.getString(String.valueOf(GCGModesParser.title));
                 currentStepType = dicCurrentState.getString(String.valueOf(GCGModesParser.type));
@@ -482,7 +482,7 @@ public class GCGModesParser {
                     currentStepType = "-1";
                 }
 
-                saveState(dicCurrentState.getString(String.valueOf(GCGModesParser.id)), mContext.getResources().getString(R.string.yes));
+                saveState(dicCurrentState.getString(String.valueOf(GCGModesParser.id)), "yes");
                 dicCurrentState = jsonObject_mode2.getJSONObject(String.valueOf(toPoint));
                 currentStepText = dicCurrentState.getString(String.valueOf(GCGModesParser.title));
                 currentStepType = dicCurrentState.getString(String.valueOf(GCGModesParser.type));
@@ -491,6 +491,10 @@ public class GCGModesParser {
             e.printStackTrace();
         }
 
+        Log.e("TAG", "dicCurrentState==>" + dicCurrentState);
+        Log.e("TAG", "currentRootNode==>" + currentRootNode);
+        Log.e("TAG", "currentStepText==>" + currentStepText);
+        Log.e("TAG", "currentStepType==>" + currentStepType);
     }
 
 
@@ -539,7 +543,7 @@ public class GCGModesParser {
 
                     saveDataForPdf(dicCurrentState.getString(GCGModesParser.title), optionID);
                 }
-                saveState(dicCurrentState.getString(String.valueOf(GCGModesParser.id)), mContext.getResources().getString(R.string.yes));
+                saveState(dicCurrentState.getString(String.valueOf(GCGModesParser.id)), "yes");
                 dicCurrentState = jsonObject_mode2.getJSONObject(String.valueOf(toPoint));
                 currentStepText = dicCurrentState.getString(String.valueOf(GCGModesParser.title));
                 currentStepType = dicCurrentState.getString(String.valueOf(GCGModesParser.type));
@@ -564,7 +568,7 @@ public class GCGModesParser {
 
                         if (array.getJSONObject(i).opt(GCGModesParser.exitType) != null) {
                             removeValueForPPKey();
-                            saveState(array.getJSONObject(i).getString(GCGModesParser.exitType), mContext.getResources().getString(R.string.yes));
+                            saveState(array.getJSONObject(i).getString(GCGModesParser.exitType), "yes");
                         }
                     }
                 } else {
@@ -576,7 +580,7 @@ public class GCGModesParser {
 
                         if (array.getJSONObject(i).opt(GCGModesParser.exitType) != null) {
                             removeValueForPPKey();
-                            saveState(array.getJSONObject(i).getString(GCGModesParser.exitType), mContext.getResources().getString(R.string.yes));
+                            saveState(array.getJSONObject(i).getString(GCGModesParser.exitType), "yes");
                         }
                     }
                 }

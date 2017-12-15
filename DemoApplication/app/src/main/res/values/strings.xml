@@ -101,6 +101,7 @@
     <string name="pdf_job_offer">- Because you have a job offer from a US employer willing to petition for a green card for you, you can: </string>
     <string name="pdf_sibiling_twenty_one">- Because you have a citizen sibling over 21, you can: </string>
     <string name="pdf_petition_filed_for_you">- Because you had or will have a petition filed for you by your parent or sibling, you can: </string>
+    <string name="pdf_petition_filed_spouse">- Because your spouse had or will have a petition filed for them by their parent, sibling or employer, you can: </string>
     <string name="pdf_summarize">To summarize, these are the action steps you could take to obtain permanent residence in the US:</string>
     <string name="pdf_action_steps">These are the action steps you could take to stay temporarily in the US:</string>
 

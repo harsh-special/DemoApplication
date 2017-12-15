@@ -99,20 +99,21 @@
 
     <!--Pdf strings-->
     <string name="pdf_header_name">Tarjetaverde Go! Informe</string>
-    <string name="pdf_actual_resposne_point">SPAIN_Below are all the actual responses that you\'ve inputted into the app and the action steps given:</string>
+    <string name="pdf_actual_resposne_point">A continuación son las respuestas reales que ingresó en el app y los pasos de acción dados:</string>
 
-    <string name="pdf_married_citizen">- Debido a que está casado con un ciudadano o titular de una tarjeta verde, puede:</string>
-    <string name="pdf_children_citizen">- Debido a que tiene hijos, al menos uno de los cuales es o será ciudadano mayor de 21 años, puede:</string>
-    <string name="pdf_unmarried_parent_citizen">- Debido a que es menor de 21 años y no está casado y su padre es ciudadano o poseedor de una tarjeta verde, usted puede:</string>
-    <string name="pdf_petition_parent_filed">- Debido a que su padre, hermano o empleador presentó o solicitará una petición para sus padres, usted puede:</string>
-    <string name="pdf_job_offer">- Debido a que tiene una oferta de trabajo de un empleador de los EE. UU. Dispuesto a solicitar una tarjeta verde para usted, puede:</string>
-    <string name="pdf_sibiling_twenty_one">- Porque tienes un hermano ciudadano mayor de 21 años, puedes:</string>
-    <string name="pdf_petition_filed_for_you">- Debido a que tuvo o tendrá una petición presentada por su padre o hermano, usted puede:</string>
+    <string name="pdf_married_citizen">- Porque es casado(a) con un(a) ciudadano(a) o residente permanente, puede: </string>
+    <string name="pdf_children_citizen">- Porque tiene hijos, al menos un(a) hijo(a) es o será un(a) ciudadano(a) que tiene 21 años o más, puede: </string>
+    <string name="pdf_unmarried_parent_citizen">- Porque tiene menos de 21 años y soltero(a) y su padre/madre es ciudadano(a) o residente permanente, puede: </string>
+    <string name="pdf_petition_parent_filed">- Porque su padre/madre tenía o tendrá una petición sometida para él/ella por su padre/madre, hermano(a) o empleador, Ud. puede:  </string>
+    <string name="pdf_job_offer">- Porque tiene una oferta de trabajo de un empleador estadounidense dispuesto a solicitar por la residencia permanente para Ud., puede: </string>
+    <string name="pdf_sibiling_twenty_one">- Porque tiene un(a) hermano(a) quien tiene 21 años o más, puede: </string>
+    <string name="pdf_petition_filed_for_you">- Porque tenía o tendrá una petición sometida para Ud. por su padre/madre o hermano(a), puede: </string>
+    <string name="pdf_petition_filed_spouse">- Porque tenía o tendrá una petición sometida para Ud. por su padre/madre o hermano(a), puede: </string>
     <string name="pdf_summarize">Para resumir, estos son los pasos de acción que puede tomar para obtener la residencia permanente en los EE. UU .:</string>
     <string name="pdf_action_steps">Estos son los pasos de acción que podría tomar para permanecer temporalmente en los EE. UU .:</string>
 
     <string name="yes">sí</string>
-    <string name="no">nope</string>
+    <string name="no">no</string>
     <string name="ok">ok</string>
 
     <string name="capital_first_yes">Sí</string>
