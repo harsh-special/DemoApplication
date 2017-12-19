@@ -32,10 +32,10 @@
          "<html><body>"
 
              "<p align=\"justify\">"
-"La información proporcionada por esta aplicación GreenCard Go! Sobre posibles métodos, si corresponde, para que usted obtenga una \" tarjeta verde \ "con el fin de ser un residente permanente legal de los Estados Unidos es proporcionado solo como información legal. NO pretende ser un asesoramiento legal".
+"La información proporcionada por esta aplicación TarjetaVerde Go! Sobre posibles métodos, si corresponde, para que usted obtenga una \" tarjeta verde \ "con el fin de ser un residente permanente legal de los Estados Unidos es proporcionado solo como información legal. NO pretende ser un asesoramiento legal".
 "Se han tomado todas las precauciones y esfuerzos para garantizar que esta aplicación contenga la información de inmigración más precisa y precisa;
-"GreenCard Go! No ofrece garantía ni representación alguna, ya sea expresa o implícita, en cuanto a la exactitud de dicha información".
-"Cualquier acción que tome o en la que confíe después de usar esta aplicación es su propia responsabilidad y GreenCard Go! No tiene responsabilidad ni conexión con dicha acción".
+"TarjetaVerde Go! No ofrece garantía ni representación alguna, ya sea expresa o implícita, en cuanto a la exactitud de dicha información".
+"Cualquier acción que tome o en la que confíe después de usar esta aplicación es su propia responsabilidad y TarjetaVerde Go! No tiene responsabilidad ni conexión con dicha acción".
 "Se recomienda encarecidamente la consulta con un abogado de inmigración calificado para obtener asesoramiento y orientación definitivos para sus soluciones y planificación de inmigración".
 "como en el Bufete de abogados de Larry L. Doan, GuruImmigration.com, en Los Ángeles, California, el creador de esta aplicación".
 "</p> "
@@ -68,11 +68,11 @@
          "<html><body>"
 
              "<p align=\"justify\">"
-          "La información proporcionada por esta aplicación GreenCard Go! Sobre posibles métodos, si corresponde, para que usted obtenga una \" tarjeta verde \ "con el fin de ser un residente permanente legal de los Estados Unidos es"
+          "La información proporcionada por esta aplicación TarjetaVerde Go! Sobre posibles métodos, si corresponde, para que usted obtenga una \" tarjeta verde \ "con el fin de ser un residente permanente legal de los Estados Unidos es"
 "proporcionado solo como información legal. NO pretende ser un asesoramiento legal".
 "Se han tomado todas las precauciones y esfuerzos para garantizar que esta aplicación contenga la información de inmigración más precisa y precisa;
-"GreenCard Go! No ofrece garantía ni representación alguna, ya sea expresa o implícita, en cuanto a la exactitud de dicha información".
-"Cualquier acción que tome o en la que confíe después de usar esta aplicación es su propia responsabilidad y GreenCard Go! No tiene responsabilidad ni conexión con dicha acción".
+"TarjetaVerde Go! No ofrece garantía ni representación alguna, ya sea expresa o implícita, en cuanto a la exactitud de dicha información".
+"Cualquier acción que tome o en la que confíe después de usar esta aplicación es su propia responsabilidad y TarjetaVerde Go! No tiene responsabilidad ni conexión con dicha acción".
 "Se recomienda encarecidamente la consulta con un abogado de inmigración calificado para obtener asesoramiento y orientación definitivos para sus soluciones y planificación de inmigración".
 "como en el Bufete de abogados de Larry L. Doan, GuruImmigration.com, en Los Ángeles, California, el creador de esta aplicación".
 "</p> "
@@ -129,7 +129,7 @@
     <string name="dialog_free_version_message">Es la veriosn gratis</string>
     <string name="dialog_free_version_title">Surri</string>
 
-    <string name="mail_check">Gracias por usar GreenCard Go !. Revise su correo electrónico y descargue el archivo pdf para ver las opciones que acaba de seleccionar y los métodos recomendados para que usted inmigre o permanezca en los EE. UU. Si desea ejecutar la aplicación nuevamente con diferentes opciones, simplemente presione el botón Actualizar o Inicio.</string>
+    <string name="mail_check">Gracias por usar TarjetaVerde Go!. Revise su correo electrónico y descargue el archivo pdf para ver las opciones que acaba de seleccionar y los métodos recomendados para que usted inmigre o permanezca en los EE. UU. Si desea ejecutar la aplicación nuevamente con diferentes opciones, simplemente presione el botón Actualizar o Inicio.</string>
 
     <string name="message_option_select">"Lo siento, necesita escoger al menos una opción.</string>
 </resources>
